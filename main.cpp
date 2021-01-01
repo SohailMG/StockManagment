@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// abstract class Product with methods and attributes to be inherited
 class Product
 {
 public:

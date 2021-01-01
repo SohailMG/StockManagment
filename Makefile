@@ -1,10 +1,12 @@
+CXXFLAGS += -w
 all: Program
 
+
 Program: main.o
-		g++  main.cpp  -o Program
+		g++ $(CXXFLAGS) main.cpp  -o Program
 
 main.o: main.cpp
-		   g++ -c main.cpp
+		   g++ $(CXXFLAGS) -c main.cpp
 
 
 clean:
