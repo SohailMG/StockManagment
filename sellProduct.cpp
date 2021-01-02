@@ -16,6 +16,7 @@ public:
     string tempString;
 
     void readInventory(){
+        ofstream tempFile("temp.txt");
         ifstream datafile("Inventory.txt");
         if (!datafile.is_open())
         {
@@ -28,15 +29,26 @@ public:
         {
             stringstream ss(line);
 
+                
             getline(ss, tempString,':');
             itemCode = stoi(tempString);
             getline(ss, itemName,':');
             getline(ss, itemType,':');
             getline(ss, tempString,':');
             itemPrice = stoi(tempString);
+            getline(ss, tempString,':');
+            quantity = stoi(tempString);
 
-            cout << itemCode << itemType << itemName << itemPrice << endl;
+            tempFile 
+                    << itemCode <<':'
+                    << itemName <<':'
+                    << itemType <<':'
+                    << itemPrice<<':'
+                    << quantity << endl;
+
+            
         }
+        tempFile.close();
         
         
 

@@ -52,7 +52,7 @@ class Menue:public Product
 
 
 
-int main(void)
+int main()
 {
 
     SellProduct p;
