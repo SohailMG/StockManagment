@@ -72,6 +72,7 @@ int main(void)
         M.currentMenu(menueOption);
         int ID = p.getProductID(p.itemCode);
         p.sellProduct(ID);
+        p.readInventory();
         break;
     }
 
