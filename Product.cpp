@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "header.h"
 
 
@@ -11,6 +12,7 @@ using namespace std;
 class Product
 {
 public:
+    vector<string> item_data;
     string itemName;
     string itemType;
     int itemCode;
