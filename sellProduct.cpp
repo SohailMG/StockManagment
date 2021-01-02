@@ -25,9 +25,13 @@ public:
         cout << "Sold Quantity > ";
         cin >> sold_quantity;
 
-        while (getline(datafile, line))
+        while ( getline(datafile, line))
         {
-
+            if (line == "") continue;
+            
+            
+          
+            
             if (id == line.substr(0, 4))
             {
                 stringstream ss(line);
