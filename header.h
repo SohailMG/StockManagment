@@ -1,4 +1,7 @@
 #pragma once
+#include "Product.cpp"
+#include "addProduct.cpp"
+#include "sellProduct.cpp"
 
 
 int getProductID(int itemCode);

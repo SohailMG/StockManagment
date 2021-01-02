@@ -1,44 +1,12 @@
 #include <iostream>
 #include <string>
-#include <header.h>
+#include "header.h"
+
+
 
 using namespace std;
 
 // abstract class Product with methods and attributes to be inherited
-class Product
-{
-public:
-    string itemName;
-    string itemType;
-    int itemCode;
-    double itemPrice;
-    int quantity;
-
-    int getProductID(int itemCode)
-    {
-
-        cout << "Enter Product ID: ";
-        cin >> itemCode;
-        return itemCode;
-    }
-    int showMenu()
-    {
-
-        int menu;
-        cout << " Stock Managment System"
-             << "\n\n"
-             << endl;
-        cout << " Sell Item--------------- >1" << endl;
-        cout << " Add new item------------ >2" << endl;
-        cout << " Restock Product--------- >3" << endl;
-        cout << " Update Stock------------ >4" << endl;
-        cout << " View Reports------------ >5" << endl;
-        cout << " Choose an Option > ";
-        cin >> menu;
-
-        return menu;
-    }
-};
 
 class Menue:public Product
 {
@@ -82,50 +50,7 @@ class Menue:public Product
 
 };
 
-class SellProduct : public Product
-{
 
-public:
-    int sellProduct(int ID)
-    {
-
-        cout << " Item Sold : " << ID << endl;
-    }
-};
-
-class AddProduct : public Product
-{
-    public:
-    void product_info()
-    {
-
-        cout << " Enter Item Code     : " << endl;
-        cin >> itemCode;
-        cout << " Enter Item Name     : " << endl;
-        cin >> itemName;
-        cout << " Enter Item Type     : " << endl;
-        cin >> itemType;
-        cout << " Enter Item Price    : " << endl;
-        cin >> itemPrice;
-        cout << " Enter Item Quantity : " << endl;
-        cin >> quantity;
-        
-    }
-
-    void show_added(){
-
-        cout << "New Product added" << endl;
-        cout << "ID       : "<< itemCode << endl;
-        cout << "Name     : "<< itemName << endl;
-        cout << "Type     : "<< itemType << endl;
-        cout << "Price    : "<< itemPrice << endl;
-        cout << "quantity : "<< quantity << endl;
-
-    }
-    
-    
-
-};
 
 int main(void)
 {
