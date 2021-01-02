@@ -10,7 +10,7 @@ int showMenue();
 
 void currentMenu(int menueOption);
 
-int sellProduct(int ID);
+int sellProduct();
 
 void product_info();
 

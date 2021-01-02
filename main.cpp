@@ -70,8 +70,6 @@ int main()
     case 1:
     {
         M.currentMenu(menueOption);
-        int ID = p.getProductID(p.itemCode);
-        p.sellProduct(ID);
         p.readInventory();
         break;
     }

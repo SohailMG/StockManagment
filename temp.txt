@@ -1,3 +1,3 @@
-1234:CD:Xfaxtor:12:1
+1234:CD:Xfaxtor:12:0
 1256:Book:OmMen:6:12
 1200:DVD:Jawa:10:6
