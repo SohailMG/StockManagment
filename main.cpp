@@ -2,55 +2,50 @@
 #include <string>
 #include "header.h"
 
-
-
 using namespace std;
 
 // abstract class Product with methods and attributes to be inherited
 
-class Menue:public Product
+class Menue : public Product
 {
-    
-    public:
-        string ActiveMenue;
-        string MENUE     = "-------Main Menue--------";
-        string SELL      = "-------Sell Item---------";
-        string ADD       = "--------Add Item---------";
-        string RESTOCK   = "------Restock Item-------";
-        string UPDATE    = "-------Update Item-------";
-        string VIEW      = "----View Sales Report----";
 
-        void currentMenu(int menueOption){
-            
-            switch (menueOption)
-            {
-            case 1:
-                ActiveMenue = SELL;
-                break;
-            case 2:
-                ActiveMenue = ADD;
-                break;
-            case 3:
-                ActiveMenue = RESTOCK;
-                break;
-            case 4:
-                ActiveMenue = UPDATE;
-                break;
-            case 5:
-                ActiveMenue = VIEW;
-                break;
-            
-            default:
-                break;
-            }
+public:
+    string ActiveMenue;
+    string MENUE = "-------Main Menue--------";
+    string SELL = "-------Sell Item---------";
+    string ADD = "--------Add Item---------";
+    string RESTOCK = "------Restock Item-------";
+    string UPDATE = "-------Update Item-------";
+    string VIEW = "----View Sales Report----";
 
-            cout << ActiveMenue << endl;
+    void currentMenu(int menueOption)
+    {
 
+        switch (menueOption)
+        {
+        case 1:
+            ActiveMenue = SELL;
+            break;
+        case 2:
+            ActiveMenue = ADD;
+            break;
+        case 3:
+            ActiveMenue = RESTOCK;
+            break;
+        case 4:
+            ActiveMenue = UPDATE;
+            break;
+        case 5:
+            ActiveMenue = VIEW;
+            break;
+
+        default:
+            break;
         }
 
+        cout << ActiveMenue << endl;
+    }
 };
-
-
 
 int main()
 {
@@ -59,34 +54,42 @@ int main()
     Product P;
     Menue M;
     AddProduct A;
+    string user_ends;
+    bool isvalid;
 
+    isvalid = true;
 
-    int menueOption = P.showMenu();
-    cout << "\n\n"<<endl;
-    
-
-    switch (menueOption)
+    while (isvalid)
     {
-    case 1:
-    {
-        M.currentMenu(menueOption);
-        p.readInventory();
-        break;
-    }
+        int menueOption = P.showMenu();
+        cout << "\n\n"
+             << endl;
+             
 
-    {
-    case 2:
-        M.currentMenu(menueOption);
-        A.product_info();
-        A.show_added();
-        break;
-    }
-    default:
-        break;
-    }
+        if (menueOption == 1)
+        {
+            M.currentMenu(menueOption);
+            p.readInventory();
+        }
+        else if (menueOption == 2)
+        {
+            M.currentMenu(menueOption);
+            A.product_info();
+            if (!cin)
+            {
+                cout << "invalid Entry...." << endl;
+                isvalid = false;
+            }
+            else
+            {
 
+                A.writeToFile();
+                A.outfile.close();
+                A.show_added();
+            }
+        }
 
-    
+    }
 
     return 0;
 }

@@ -15,4 +15,5 @@ int sellProduct();
 void product_info();
 
 void show_added();
- void readInventory();
+
+void readInventory();

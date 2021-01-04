@@ -18,6 +18,7 @@ public:
     int itemCode;
     double itemPrice;
     int quantity;
+    bool validinpt;
 
     int getProductID(int itemCode)
     {
