@@ -64,7 +64,6 @@ int main()
         int menueOption = P.showMenu();
         cout << "\n\n"
              << endl;
-             
 
         if (menueOption == 1)
         {
@@ -73,22 +72,20 @@ int main()
         }
         else if (menueOption == 2)
         {
+
             M.currentMenu(menueOption);
             A.product_info();
-            if (!cin)
-            {
-                cout << "invalid Entry...." << endl;
-                isvalid = false;
-            }
-            else
-            {
 
-                A.writeToFile();
-                A.outfile.close();
-                A.show_added();
-            }
+            A.writeToFile();
+            A.outfile.close();
+            A.item_data.clear();
         }
-
+        else if (menueOption == 6)      
+        {
+            cout << "\n" << "Exited Program...." << endl;
+            isvalid = false;
+        }
+        
     }
 
     return 0;

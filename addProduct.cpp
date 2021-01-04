@@ -11,26 +11,10 @@ class AddProduct : public Product
 public:
     ofstream outfile;
     string tmp;
-    int added_items;
+    bool valid;
 
-    bool product_info()
+    void product_info()
     {
-        bool valid = true;
-
-        // opening file in append mode
-       
-
-        cout << "Number of Products > ";
-        cin >> added_items;
-
-        string items[added_items];
-
-        for (int i = 0; i < added_items; i++)
-        {
-            
-        
-
-        
 
         // storing info of new item into a vector
         cout << " Enter Item Code     : " << endl;
@@ -38,12 +22,15 @@ public:
         if (!cin)
         {
             valid = false;
+            cout << '\n' << "Item Code must be an Integer"<<'\n' << endl;
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else
         {
 
             item_data.push_back(to_string(itemCode));
-            
 
             cout << " Enter Item Name     : " << endl;
             cin >> itemName;
@@ -62,43 +49,28 @@ public:
             cin >> quantity;
             item_data.push_back(to_string(quantity));
             item_data.push_back("nl");
-            
-
-            
         }
-
-           
-
-            // looping through vector and writing new item data into a file
-        }
-        return valid;
-    }
-
-    void show_added()
-    {
-
-        cout << "New Product added" << endl;
-        cout << "ID       : " << itemCode << endl;
-        cout << "Name     : " << itemName << endl;
-        cout << "Type     : " << itemType << endl;
-        cout << "Price    : " << itemPrice << endl;
-        cout << "quantity : " << quantity << endl;
+        // looping through vector and writing new item data into a file
     }
     void writeToFile()
     {
         outfile.open("Inventory.txt", std::ios_base::app);
         for (size_t i = 0; i < item_data.size(); i++)
         {
-           if (item_data[i] == "nl")
-           {
-               outfile << '\n';
-           }else{
-           
-            
-            
-            outfile << item_data[i] << ':';
-           }
-            
+            if (item_data[i] == "nl")
+            {
+                outfile << '\n';
+            }
+            else
+            {
+
+                outfile << item_data[i] << ':';
+            }
         }
     }
+    void InvalidInpt()
+    {
+
+        cout << "Invalid Input " << endl;
+    };
 };

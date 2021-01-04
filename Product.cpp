@@ -39,6 +39,7 @@ public:
         cout << " Restock Product--------- >3" << endl;
         cout << " Update Stock------------ >4" << endl;
         cout << " View Reports------------ >5" << endl;
+        cout << " Quit Program------------ >6" << endl;
         cout << " Choose an Option > ";
         cin >> menu;
 
