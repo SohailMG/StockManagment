@@ -76,7 +76,7 @@ int main()
             M.currentMenu(menueOption);
             A.product_info();
 
-            A.writeToFile();
+            A.store_product();
             A.outfile.close();
             A.item_data.clear();
         }

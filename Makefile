@@ -1,5 +1,7 @@
 CXXFLAGS += -w
 CXX = g++
+RM = rm -rf 
+
 .PHONY = all
 all: Program
 
@@ -12,4 +14,4 @@ main.o: main.cpp header.h
 
 .PHONY : clean
 clean:
-		rm -rf *o Program
+		$(RM) *o Program

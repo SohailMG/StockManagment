@@ -28,10 +28,7 @@ public:
         while ( getline(datafile, line))
         {
             if (line == "") continue;
-            
-            
-          
-            
+
             if (id == line.substr(0, 4))
             {
                 stringstream ss(line);

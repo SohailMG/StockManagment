@@ -17,3 +17,9 @@ void product_info();
 void show_added();
 
 void readInventory();
+
+bool valid_Type(string type);
+
+string stringToUpper(string oString);
+
+void store_product();
