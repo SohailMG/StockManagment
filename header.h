@@ -2,6 +2,7 @@
 #include "Product.cpp"
 #include "addProduct.cpp"
 #include "sellProduct.cpp"
+#include "RestockProduct.cpp"
 
 
 int getProductID(int itemCode);
@@ -17,6 +18,7 @@ void product_info();
 void show_added();
 
 void readInventory();
+
 
 bool valid_Type(string type);
 
