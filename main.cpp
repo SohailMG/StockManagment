@@ -70,6 +70,8 @@ int main()
         {
             M.currentMenu(menueOption);
             p.readInventory();
+            R.delete_old();
+            R.update_inventory();
         }
         else if (menueOption == 2)
         {
@@ -80,6 +82,7 @@ int main()
             A.store_product();
             A.outfile.close();
             A.item_data.clear();
+            
         }
         else if (menueOption == 3)
         {

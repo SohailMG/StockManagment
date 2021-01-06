@@ -94,5 +94,6 @@ public:
             outfile << '\n';
 
         }
+        outfile.close();
     }
 };
