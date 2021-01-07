@@ -8,14 +8,16 @@ class SellProduct : public Product
 {
 
 public:
-    string line;
-    string tempString;
+    string line , tempString;
+    vector<string> items_sold;
+    int num_of_sold = 1;
     int sold_quantity;
 
     void readInventory()
     {
         ofstream tempFile("temp.txt");
         ifstream datafile("Inventory.txt");
+        ofstream sales("sales.txt", std::ios_base::app);
         if (!datafile.is_open())
         {
             cout << "File failed to open " << endl;
@@ -47,6 +49,14 @@ public:
                     << itemType << ':'
                     << itemPrice << ':'
                     << quantity << endl;
+                sales
+                    << itemCode << ':'
+                    << itemName << ':'
+                    << itemType << ':'
+                    << itemPrice << ':'
+                    << quantity << endl;
+
+                
 
             }
             if (id != line.substr(0, 4))
@@ -72,9 +82,44 @@ public:
         tempFile.close();
     }
 
-    int sellProduct(int ID)
+
+
+    void view_sales()
     {
 
-        cout << " Item Sold : " << ID << endl;
+        ifstream sales("sales.txt");
+
+
+        while ( getline(sales, line))
+        {
+            if (line == "") continue;
+
+        cout << "--------Product " << num_of_sold++ << "--------"<< endl;
+                stringstream ss(line);
+                getline(ss, tempString, ':');
+                itemCode = stoi(tempString);
+
+                cout << "ID      : " <<itemCode << endl;
+
+                getline(ss, itemName, ':');
+
+                cout << "Name    : " <<itemName << endl;
+
+                getline(ss, itemType, ':');
+
+                cout << "Type    : " <<itemType << endl;
+
+                getline(ss, tempString, ':');
+                itemPrice = stoi(tempString);
+
+                cout << "Price   : £" << itemPrice << endl;
+                
+                
+
+                cout << '\n';
+            
+        }
+        
+        
     }
 };

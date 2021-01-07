@@ -5,6 +5,10 @@
 #include "RestockProduct.cpp"
 #include "updateStock.cpp"
 
+#ifndef header_H
+#define header_H
+
+
 
 int getProductID(int itemCode);
 
@@ -30,4 +34,7 @@ void store_product();
 void update_inventory();
 
 void delete_old();
+
+void view_sales();
     
+#endif

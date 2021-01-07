@@ -8,8 +8,7 @@ class RestockProduct : public Product
 {
 
 public:
-    string line;
-    string tempString;
+    string line , tempString;
     ofstream outfile;
     ifstream temp;
     bool deleted_old;

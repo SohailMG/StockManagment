@@ -6,18 +6,13 @@
 
 using namespace std;
 
-
-
-
 class Product
 {
 public:
     vector<string> item_data;
-    string itemName;
-    string itemType;
-    int itemCode;
+    string itemName , itemType;
+    int itemCode , quantity;
     double itemPrice;
-    int quantity;
     bool validinpt;
 
     int getProductID(int itemCode)

@@ -1,8 +1,8 @@
 1221:jill:CD:13:2
-1010:kill:DVD:10:34
-1233:kill:CD:10:8
+1010:kill:DVD:10:4
+1233:kill:CD:10:4
 3310:jis:CD:13:10
-9999:testing:CD:13:4
-2030:jit:CD:10:28
-1010:killer:CD:0:0
+9999:testing:CD:13:2
+2030:jit:CD:10:8
+1010:killer:CD:0:-30
 1991:uin:DVD:16:1

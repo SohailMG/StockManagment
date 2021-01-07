@@ -6,6 +6,7 @@
 #include <algorithm>
 #include "header.h"
 
+
 using namespace std;
 
 class AddProduct : public Product
