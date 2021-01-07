@@ -55,6 +55,7 @@ int main()
     Menue M;
     AddProduct A;
     RestockProduct R;
+    UpdateStock U;
     string user_ends;
     bool isvalid;
 
@@ -70,8 +71,8 @@ int main()
         {
             M.currentMenu(menueOption);
             p.readInventory();
-            R.delete_old();
-            R.update_inventory();
+            U.delete_old();
+            U.update_inventory();
         }
         else if (menueOption == 2)
         {
@@ -88,8 +89,8 @@ int main()
         {
             M.currentMenu(menueOption);
             R.readInventory();
-            R.delete_old();
-            R.update_inventory();
+            U.delete_old();
+            U.update_inventory();
 
         }
         else if (menueOption == 6)      

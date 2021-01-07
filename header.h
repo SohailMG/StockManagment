@@ -3,6 +3,7 @@
 #include "addProduct.cpp"
 #include "sellProduct.cpp"
 #include "RestockProduct.cpp"
+#include "updateStock.cpp"
 
 
 int getProductID(int itemCode);
@@ -25,3 +26,8 @@ bool valid_Type(string type);
 string stringToUpper(string oString);
 
 void store_product();
+
+void update_inventory();
+
+void delete_old();
+    
