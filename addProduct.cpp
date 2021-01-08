@@ -6,6 +6,14 @@
 #include <algorithm>
 #include "addProduct.h"
 
+/**
+ * addProduct.cpp
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 02/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
+
 
 using namespace std;
 
@@ -13,9 +21,6 @@ using namespace std;
 {
      
 };
-
-
-
     /**
      * reads user input for product info such as
      * prodocut ID,Type,Name,Price and Quantity.
@@ -106,6 +111,7 @@ using namespace std;
                 
             }
         }
+        outfile.close();
     }
     /**
      * checks if prduct type entered by user

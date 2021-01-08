@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "header.h"
 #include "updateStock.h"
 #include "addProduct.h"
 #include "sellProduct.h"
@@ -47,7 +46,6 @@ int main()
             add.product_info();
 
             add.store_product();
-            add.outfile.close();
             add.item_data.clear();
             
         }

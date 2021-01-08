@@ -2,11 +2,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "header.h"
 
 #ifndef Product_H
 #define Product_H
 
+/**
+ * Product.h
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 using namespace std;
 
 class Product
