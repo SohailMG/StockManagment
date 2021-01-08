@@ -28,7 +28,6 @@ public:
     Menue();
     void currentMenu(int menueOption);
     int showMenu();
-    void check_action(bool status);
 };
 
 #endif
