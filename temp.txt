@@ -1,10 +1,10 @@
 1221:jill:CD:13:-1
-1010:kill:DVD:10:4
+1010:kill:DVD:10:12
 1233:kill:CD:10:6
 3310:jis:CD:13:10
 9999:testing:CD:13:2
 2030:jit:CD:10:8
-1010:killer:CD:0:-30
+1010:killer:CD:0:-22
 1991:uin:DVD:16:1
 1020:hello:CD:10:30
 9910:oil:CD:14:10

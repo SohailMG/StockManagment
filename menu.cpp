@@ -1,21 +1,22 @@
 #include <iostream>
 #include <string>
 #include "header.h"
+#include "menu.h"
 
 
-class Menue : public Product
+Menue::Menue()
 {
 
-public:
-    string ActiveMenue;
-    string MENUE   = "-------Main Menue--------";
-    string SELL    = "-------Sell Item---------";
-    string ADD     = "--------Add Item---------";
-    string RESTOCK = "------Restock Item-------";
-    string UPDATE  = "-------Update Item-------";
-    string VIEW    = "-------Sales Report----";
+    
+    MENUE   = "-------Main Menue--------";
+    SELL    = "-------Sell Item---------";
+    ADD     = "--------Add Item---------";
+    RESTOCK = "------Restock Item-------";
+    UPDATE  = "-------Update Item-------";
+    VIEW    = "-------Sales Report----";
+};
 
-    void currentMenu(int menueOption)
+    void Menue::currentMenu(int menueOption)
     {
 
         switch (menueOption)
@@ -42,4 +43,21 @@ public:
 
         cout << ActiveMenue << endl;
     }
-};
+    int Menue::showMenu()
+    {
+
+        int menu;
+        cout << " Stock Managment System"
+             << "\n\n"
+             << endl;
+        cout << " Sell Item--------------- >1" << endl;
+        cout << " Add new item------------ >2" << endl;
+        cout << " Restock Product--------- >3" << endl;
+        cout << " Update Stock------------ >4" << endl;
+        cout << " View Reports------------ >5" << endl;
+        cout << " Quit Program------------ >6" << endl;
+        cout << " Choose an Option > ";
+        cin >> menu;
+
+        return menu;
+    }

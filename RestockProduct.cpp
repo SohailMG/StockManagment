@@ -3,18 +3,13 @@
 #include <sstream>
 #include <fstream>
 #include "header.h"
+#include "RestockProduct.h"
 
-class RestockProduct : public Product
+RestockProduct::RestockProduct()
 {
+};
 
-public:
-    string line , tempString;
-    ofstream outfile;
-    ifstream temp;
-    bool deleted_old;
-    int restock_amount;
-
-    void readInventory()
+    void RestockProduct::readInventory()
     {
         ofstream tempFile("temp.txt");
         ifstream datafile("Inventory.txt");
@@ -73,4 +68,3 @@ public:
         }
         tempFile.close();
     }
-};

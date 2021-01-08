@@ -3,17 +3,15 @@
 #include <sstream>
 #include <fstream>
 #include "header.h"
+#include "sellProduct.h"
 
-class SellProduct : public Product
+ SellProduct::SellProduct()
 {
+    num_of_sold = 1;
 
-public:
-    string line , tempString;
-    vector<string> items_sold;
-    int num_of_sold = 1;
-    int sold_quantity;
+};
 
-    void readInventory()
+    void SellProduct::readInventory()
     {
         ofstream tempFile("temp.txt");
         ifstream datafile("Inventory.txt");
@@ -85,7 +83,7 @@ public:
 
 
 
-    void view_sales()
+    void SellProduct::view_sales()
     {
 
         ifstream sales("sales.txt");
@@ -123,4 +121,3 @@ public:
         
         
     }
-};

@@ -11,29 +11,5 @@
 
 
 
-int getProductID(int itemCode);
-
-int showMenue();
-
-void currentMenu(int menueOption);
-
-int sellProduct();
-
-void product_info();
-
-void show_added();
-
-void readInventory();
-
-
-bool valid_Type(string type);
-
-string stringToUpper(string oString);
-
-void store_product();
-
-
-
-void view_sales();
     
 #endif

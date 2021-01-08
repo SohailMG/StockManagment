@@ -3,7 +3,11 @@
 #include "header.h"
 #include "updateStock.h"
 #include "addProduct.h"
-// #include "updateStock.h"
+#include "sellProduct.h"
+#include "RestockProduct.h"
+#include "Product.h"
+#include "menu.h"
+
 
 using namespace std;
 
@@ -25,7 +29,7 @@ int main()
 
     while (isvalid)
     {
-        int menueOption = product.showMenu();
+        int menueOption = menue.showMenu();
         cout << "\n\n"
              << endl;
 
