@@ -3,17 +3,14 @@
 #include <sstream>
 #include <fstream>
 #include "header.h"
+#include "updateStock.h"
 
-class UpdateStock : public Product
+UpdateStock::UpdateStock()
 {
 
-public:
-    string line;
-    ofstream outfile;
-    ifstream temp;
-    bool deleted_old;
+};
 
-    void delete_old()
+    void UpdateStock::delete_old()
     {
 
         outfile.open("Inventory.txt", std::ios_base::app);
@@ -22,7 +19,7 @@ public:
         else
             deleted_old = false;
     }
-    void update_inventory()
+    void UpdateStock::update_inventory()
     {
         ifstream temp("temp.txt");
         string lines;
@@ -34,4 +31,3 @@ public:
         }
         outfile.close();
     }
-};

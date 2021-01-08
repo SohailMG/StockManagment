@@ -4,6 +4,7 @@
 #include "sellProduct.cpp"
 #include "RestockProduct.cpp"
 #include "updateStock.cpp"
+#include "menu.cpp"
 
 #ifndef header_H
 #define header_H
@@ -30,10 +31,6 @@ bool valid_Type(string type);
 string stringToUpper(string oString);
 
 void store_product();
-
-void update_inventory();
-
-void delete_old();
 
 void view_sales();
     

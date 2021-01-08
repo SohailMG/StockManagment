@@ -1,6 +1,6 @@
-1221:jill:CD:13:2
+1221:jill:CD:13:1
 1010:kill:DVD:10:4
-1233:kill:CD:10:4
+1233:kill:CD:10:6
 3310:jis:CD:13:10
 9999:testing:CD:13:2
 2030:jit:CD:10:8

@@ -15,17 +15,18 @@ public:
 
     void readInventory()
     {
-        ofstream tempFile("temp.txt");
-        ifstream datafile("Inventory.txt");
-        ofstream sales("sales.txt", std::ios_base::app);
+        std::ofstream tempFile("temp.txt");
+        std::ifstream datafile("Inventory.txt");
+        std::ofstream sales("sales.txt", std::ios_base::app);
         if (!datafile.is_open())
         {
             cout << "File failed to open " << endl;
         }
 
-        string id = to_string(getProductID(itemCode));
+        string id = to_string(Product::getProductID(itemCode));
         cout << "Sold Quantity > ";
         cin >> sold_quantity;
+        cout << "Item sold...." << endl;
 
         while ( getline(datafile, line))
         {
@@ -36,8 +37,8 @@ public:
                 stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
-                getline(ss, itemName, ':');
-                getline(ss, itemType, ':');
+                getline(ss, itemName,   ':');
+                getline(ss, itemType,   ':');
                 getline(ss, tempString, ':');
                 itemPrice = stoi(tempString);
                 getline(ss, tempString, ':');
