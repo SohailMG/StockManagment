@@ -3,12 +3,13 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+// #include "updateStock.cpp"
 #include "header.h"
 
 #ifndef updateStock_H
 #define updateStock_H
 
-using namespace std;
+
 
 class UpdateStock : public Product
 {

@@ -4,18 +4,16 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include "header.h"
+#include "addProduct.h"
 
 
 using namespace std;
 
-class AddProduct : public Product
+ AddProduct::AddProduct()
 {
-public:
-    string product_types[4] = {"CD", "DVD", "Magazin", "Book"};
-    ofstream outfile;
-    string tmp;
-    bool valid;
+     
+};
+
 
 
     /**
@@ -23,7 +21,7 @@ public:
      * prodocut ID,Type,Name,Price and Quantity.
      * then stores these in a vector of strings
     */
-    void product_info()
+    void  AddProduct::product_info()
     {
 
         // storing info of new item into a vector
@@ -92,7 +90,7 @@ public:
      * then loops through item_data vector and writes
      * each elment in the vector into the text file
     */
-    void store_product()
+    void AddProduct::store_product()
     {
         outfile.open("Inventory.txt", std::ios_base::app);
         for (size_t i = 0; i < item_data.size(); i++)
@@ -115,7 +113,7 @@ public:
      * @param type
      * @returns boolean value
     */
-    bool valid_Type(string type)
+    bool AddProduct::valid_Type(string type)
     {
         if (type == "CD" ||
             type == "DVD" ||
@@ -135,7 +133,7 @@ public:
      * @param str
      * @returns uppercase string
     */
-    string stringToUpper(string str)
+    string AddProduct::stringToUpper(string str)
     {
         for (int i = 0; i < str.length(); i++)
         {
@@ -143,4 +141,3 @@ public:
         }
         return str;
     }
-};

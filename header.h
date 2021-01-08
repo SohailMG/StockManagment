@@ -32,6 +32,8 @@ string stringToUpper(string oString);
 
 void store_product();
 
+
+
 void view_sales();
     
 #endif

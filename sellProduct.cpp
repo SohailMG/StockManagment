@@ -15,9 +15,9 @@ public:
 
     void readInventory()
     {
-        std::ofstream tempFile("temp.txt");
-        std::ifstream datafile("Inventory.txt");
-        std::ofstream sales("sales.txt", std::ios_base::app);
+        ofstream tempFile("temp.txt");
+        ifstream datafile("Inventory.txt");
+        ofstream sales("sales.txt", std::ios_base::app);
         if (!datafile.is_open())
         {
             cout << "File failed to open " << endl;

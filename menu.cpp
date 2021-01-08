@@ -13,7 +13,7 @@ public:
     string ADD     = "--------Add Item---------";
     string RESTOCK = "------Restock Item-------";
     string UPDATE  = "-------Update Item-------";
-    string VIEW    = "------Sales Report-------";
+    string VIEW    = "-------Sales Report----";
 
     void currentMenu(int menueOption)
     {

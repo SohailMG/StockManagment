@@ -2,6 +2,8 @@
 #include <string>
 #include "header.h"
 #include "updateStock.h"
+#include "addProduct.h"
+// #include "updateStock.h"
 
 using namespace std;
 
