@@ -13,7 +13,7 @@
  * Updated: 08/01/2021
  * 
 */
-using namespace std;
+
 
 class Product
 {
@@ -21,8 +21,8 @@ class Product
 public:
     Product();
 
-    vector<string> item_data;
-    string itemName, itemType;
+    std::vector<std::string> item_data;
+    std::string itemName, itemType;
     int itemCode, quantity;
     double itemPrice;
     bool validinpt;

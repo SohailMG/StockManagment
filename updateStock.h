@@ -21,9 +21,9 @@ class UpdateStock : public Product
 public:
     UpdateStock();
 
-    string line;
-    ofstream outfile;
-    ifstream temp;
+    std::string line;
+    std::ofstream outfile;
+    std::ifstream temp;
     bool deleted_old;
 
     void delete_old();

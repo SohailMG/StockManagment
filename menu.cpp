@@ -16,54 +16,54 @@ Menue::Menue()
     add     = "--------Add Item---------";
     restock = "------Restock Item-------";
     update  = "-------Update Item-------";
-    view    = "-------Sales Report----";
+    view    = "-------Sales Report------";
 };
 
-void Menue::currentMenu(int menueOption)
+void Menue::currentMenu(int menu_option)
 {
 
-    if (menueOption == 1)
+    if (menu_option == 1)
     {
         active_menue = sell;
     }
-    else if (menueOption == 2)
+    else if (menu_option == 2)
     {
         active_menue = add;
     }
-    else if (menueOption == 3)
+    else if (menu_option == 3)
     {
         active_menue = restock;
     }
-    else if (menueOption == 4)
+    else if (menu_option == 4)
     {
         active_menue = update;
     }
-    else if (menueOption == 5)
+    else if (menu_option == 5)
     {
         active_menue = view;
     }
     else
     {
-        cout << "No Option chosen....";
+        std::cout << "No Option chosen....";
     }
 
-    cout << active_menue << endl;
+    std::cout << active_menue << std::endl;
 }
 int Menue::showMenu()
 {
 
     int menu;
-    cout << " Stock Managment System"
+    std::cout << " Stock Managment System"
          << "\n\n"
-         << endl;
-    cout << " Sell Item--------------- >1" << endl;
-    cout << " Add new item------------ >2" << endl;
-    cout << " Restock Product--------- >3" << endl;
-    cout << " Update Stock------------ >4" << endl;
-    cout << " View Reports------------ >5" << endl;
-    cout << " Quit Program------------ >6" << endl;
-    cout << " Choose an Option > ";
-    cin >> menu;
+         << std::endl;
+    std::cout << " Sell Item--------------- >1" << std::endl;
+    std::cout << " Add new item------------ >2" << std::endl;
+    std::cout << " Restock Product--------- >3" << std::endl;
+    std::cout << " Update Stock------------ >4" << std::endl;
+    std::cout << " View Reports------------ >5" << std::endl;
+    std::cout << " Quit Program------------ >6" << std::endl;
+    std::cout << " Choose an Option > ";
+    std::cin >> menu;
 
     return menu;
 }

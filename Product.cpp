@@ -10,7 +10,7 @@
  * 
 */
 
-using namespace std;
+
 
 
 Product::Product()
@@ -20,8 +20,8 @@ Product::Product()
     int Product::getProductID(int itemCode)
     {
 
-        cout << "Enter Product ID: ";
-        cin >> itemCode;
+        std::cout << "Enter Product ID: ";
+        std::cin >> itemCode;
         return itemCode;
     }
     

@@ -18,7 +18,7 @@
 #ifndef addProduct_H
 #define addProduct_H
 
-using namespace std;
+
 
 /*
  derived class that adds a new product into a text file
@@ -29,13 +29,15 @@ public:
     AddProduct();
     void product_info();
     void store_product();
-    bool valid_Type(string type);
-    string stringToUpper(string str);
+    bool valid_Type(std::string type);
+    bool exists;
+    void item_exists(std::string id);
+    std::string stringToUpper(std::string str);
 
 private:
-    string product_types[4] = {"CD", "DVD", "Magazin", "Book"};
-    ofstream outfile;
-    string tmp;
+    std::string product_types[4] = {"CD", "DVD", "Magazin", "Book"};
+    std::ofstream outfile;
+    std::string tmp;
     bool valid;
 };
 

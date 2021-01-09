@@ -16,7 +16,7 @@
  * 
 */
 
-using namespace std;
+
 
 class SellProduct : public Product
 {
@@ -26,8 +26,8 @@ class SellProduct : public Product
     void view_sales();
 
     private:
-    string line , tempString;
-    vector<string> items_sold;
+    std::string line , tempString;
+    std::vector<std::string> items_sold;
     int num_of_sold ;
     int sold_quantity;
 

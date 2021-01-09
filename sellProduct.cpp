@@ -19,18 +19,19 @@
 
     void SellProduct::readInventory()
     {
-        ofstream tempFile("temp.txt");
-        ifstream datafile("Inventory.txt");
-        ofstream sales("sales.txt", std::ios_base::app);
+        // opening a temp file to store modified data temperarly
+        std::ofstream tempFile("temp.txt");
+        std::ifstream datafile("Inventory.txt");
+        std::ofstream sales("sales.txt", std::ios_base::app);
         if (!datafile.is_open())
         {
-            cout << "File failed to open " << endl;
+            std::cout << "File failed to open " << std::endl;
         }
 
-        string id = to_string(Product::getProductID(itemCode));
-        cout << "Sold Quantity > ";
-        cin >> sold_quantity;
-        cout << "Item sold...." << endl;
+        // getting product ID from user and sold quantity
+        std::string id = std::to_string(Product::getProductID(itemCode));
+        std::cout << "Sold Quantity > ";
+        std::cin >> sold_quantity;
 
         while ( getline(datafile, line))
         {
@@ -38,7 +39,7 @@
 
             if (id == line.substr(0, 4))
             {
-                stringstream ss(line);
+                std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
                 getline(ss, itemName,   ':');
@@ -48,25 +49,35 @@
                 getline(ss, tempString, ':');
                 quantity = stoi(tempString) - sold_quantity;
 
+                // printing detials of item sold 
+                std::cout << "Item Sold " << std::endl;
+                std::cout << "ID    : "  << itemCode<< std::endl;
+                std::cout << "Name  : "  << itemName<< std::endl;
+                std::cout << "Type  : "  << itemType<< std::endl;
+                std::cout << "Price : "  << itemPrice<< std::endl;
+
+                // storing data of item sold in a temp file
                 tempFile
                     << itemCode << ':'
                     << itemName << ':'
                     << itemType << ':'
                     << itemPrice << ':'
-                    << quantity << endl;
+                    << quantity << std::endl;
+
+                // storing detials of item sold in sales file for sales report    
                 sales
                     << itemCode << ':'
                     << itemName << ':'
                     << itemType << ':'
                     << itemPrice << ':'
-                    << quantity << endl;
+                    << quantity << std::endl;
 
                 
 
             }
             if (id != line.substr(0, 4))
             {
-                stringstream ss(line);
+                std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
                 getline(ss, itemName, ':');
@@ -81,7 +92,7 @@
                     << itemName << ':'
                     << itemType << ':'
                     << itemPrice << ':'
-                    << quantity << endl;
+                    << quantity << std::endl;
             }
         }
         tempFile.close();
@@ -92,36 +103,36 @@
     void SellProduct::view_sales()
     {
 
-        ifstream sales("sales.txt");
+        std::ifstream sales("sales.txt");
 
 
         while ( getline(sales, line))
         {
             if (line == "") continue;
 
-        cout << "--------Product " << num_of_sold++ << "--------"<< endl;
-                stringstream ss(line);
+        std::cout << "--------Product " << num_of_sold++ << "--------"<< std::endl;
+                std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
 
-                cout << "ID      : " <<itemCode << endl;
+                std::cout << "ID      : " <<itemCode << std::endl;
 
                 getline(ss, itemName, ':');
 
-                cout << "Name    : " <<itemName << endl;
+                std::cout << "Name    : " <<itemName << std::endl;
 
                 getline(ss, itemType, ':');
 
-                cout << "Type    : " <<itemType << endl;
+                std::cout << "Type    : " <<itemType << std::endl;
 
                 getline(ss, tempString, ':');
                 itemPrice = stoi(tempString);
 
-                cout << "Price   : £" << itemPrice << endl;
+                std::cout << "Price   : £" << itemPrice << std::endl;
                 
                 
 
-                cout << '\n';
+                std::cout << '\n';
             
         }
         

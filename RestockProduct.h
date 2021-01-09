@@ -16,16 +16,16 @@
  * 
 */
 
-using namespace std;
+
 
 class RestockProduct : public Product
 {
 
 
     private:
-    string line , tempString;
-    ofstream outfile;
-    ifstream temp;
+    std::string line , tempString;
+    std::ofstream outfile;
+    std::ifstream temp;
     bool deleted_old;
     int restock_amount;
 

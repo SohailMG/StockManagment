@@ -26,12 +26,12 @@ UpdateStock::UpdateStock()
     }
     void UpdateStock::update_inventory()
     {
-        ifstream temp("temp.txt");
-        string lines;
+        std::ifstream temp("temp.txt");
+        std::string lines;
         while (getline(temp, lines))
         {
             
-            ofstream outfile("Inventory.txt", std::ios_base::app);
+            std::ofstream outfile("Inventory.txt", std::ios_base::app);
             outfile << lines;
             outfile << '\n';
         }

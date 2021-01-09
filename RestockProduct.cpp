@@ -25,17 +25,17 @@ RestockProduct::RestockProduct()
     */
     void RestockProduct::readInventory()
     {
-        ofstream tempFile("temp.txt");
-        ifstream datafile("Inventory.txt");
+        std::ofstream tempFile("temp.txt");
+        std::ifstream datafile("Inventory.txt");
         if (!datafile.is_open())
         {
-            cout << "File failed to open " << endl;
+            std::cout << "File failed to open " << std::endl;
         }
 
         // calling getProductID and storing restock amount
-        string id = to_string(getProductID(itemCode));
-        cout << "Restock Amount > ";
-        cin >> restock_amount;
+        std::string id = std::to_string(getProductID(itemCode));
+        std::cout << "Restock Amount > ";
+        std::cin >> restock_amount;
 
         // parsing through datafile
         while (getline(datafile, line))
@@ -46,7 +46,8 @@ RestockProduct::RestockProduct()
             // checking if product id matches an exisiting id
             if (id == line.substr(0, 4))
             {
-                stringstream ss(line);
+                std::cout << "item exists";
+                std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
                 getline(ss, itemName, ':');
@@ -62,12 +63,13 @@ RestockProduct::RestockProduct()
                     << itemName << ':'
                     << itemType << ':'
                     << itemPrice << ':'
-                    << quantity << endl;
+                    << quantity << std::endl;
+
             }
             // storing products not matching given ID in temp file unmodified
             if (id != line.substr(0, 4))
             {
-                stringstream ss(line);
+                std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);
                 getline(ss, itemName, ':');
@@ -82,7 +84,7 @@ RestockProduct::RestockProduct()
                     << itemName << ':'
                     << itemType << ':'
                     << itemPrice << ':'
-                    << quantity << endl;
+                    << quantity << std::endl;
             }
         }
         tempFile.close();

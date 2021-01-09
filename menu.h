@@ -14,13 +14,13 @@
 #ifndef menue_H
 #define menue_H
 
-using namespace std;
+
 
 class Menue : public Product
 {
 
 private:
-     string active_menue, menue, sell, add,
+     std::string active_menue, menue, sell, add,
         restock, update, view;
     
 
