@@ -14,8 +14,6 @@
  * 
 */
 
-
-
 AddProduct::AddProduct(){
 
 };
@@ -32,30 +30,36 @@ void AddProduct::product_info()
     std::cin >> itemCode;
     // checks if itemCode matches existing id
     item_exists(std::to_string(itemCode));
-    
 
     // checking if input is not an integer
     if (!std::cin)
     {
         valid = false;
-        std::cout << '\n'
-             << "Item Code must be an Integer" << '\n'
-             << std::endl;
+        std::cout << "\n\n"
+                  << "Item Code must be an Integer" << '\n'
+                  << std::endl;
 
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-    
+
     // checking if ID is not 4 digits long
     else if (std::to_string(itemCode).length() != 4)
     {
-        std::cout << "ID Must be 4 digits...." << std::endl;
+        std::cout << "\n\n"
+                  << "ID Must be 4 digits...."
+                  << std::endl;
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     // checking if item already exists
-    else if(exists){
-        std::cout << " item with " << itemCode << "already exists"<<std::endl;
+    else if (exists)
+    {
+        std::cout << "\n\n"
+                  << "item with ID:"
+                  << itemCode
+                  << " already exists"
+                  << std::endl;
     }
     else
     {
@@ -72,7 +76,8 @@ void AddProduct::product_info()
         // checking if type is either CD DVD Book or Magazine
         if (!valid_Type(itemType))
         {
-            std::cout << "not found" << std::endl;
+            std::cout << "\n\n" << "Invalid Type" << std::endl;
+            std::cout << "Accepted Types: CD DVD BOOK MAGAZINE" << std::endl;
             std::cin.clear();
             item_data.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -84,13 +89,29 @@ void AddProduct::product_info()
 
             std::cout << " Enter Item Price    : " << std::endl;
             std::cin >> itemPrice;
-            tmp = std::to_string(itemPrice);
-            item_data.push_back(tmp.substr(0, 5));
+            if (!valid_inpt())
+            {
+                std::cout << "Invalid Price";
+                item_data.clear();
+            }
+            else
+            {
+                tmp = std::to_string(itemPrice);
+                item_data.push_back(tmp.substr(0, 5));
+            }
 
             std::cout << " Enter Item Quantity : " << std::endl;
             std::cin >> quantity;
-            item_data.push_back(std::to_string(quantity));
-            item_data.push_back("nl");
+            if (!valid_inpt())
+            {
+                std::cout << "Invalid Price";
+                item_data.clear();
+            }
+            else
+            {
+                item_data.push_back(std::to_string(quantity));
+                item_data.push_back("nl");
+            }
         }
     }
     // looping through vector and writing new item data into a file
@@ -164,19 +185,20 @@ void AddProduct::item_exists(std::string id)
     std::ifstream ReadFile;
     ReadFile.open("Inventory.txt");
 
-    if (ReadFile.is_open()) {
-        while(getline(ReadFile, line))
+    if (ReadFile.is_open())
+    {
+        while (getline(ReadFile, line))
         {
-            if (id == line.substr(0,4))
+            if (id == line.substr(0, 4))
             {
                 exists = true;
                 break;
-            }else{
+            }
+            else
+            {
                 exists = false;
             }
-            
         }
         ReadFile.close();
     }
-    
 }

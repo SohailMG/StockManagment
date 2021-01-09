@@ -32,8 +32,8 @@ RestockProduct::RestockProduct()
             std::cout << "File failed to open " << std::endl;
         }
 
-        // calling getProductID and storing restock amount
-        std::string id = std::to_string(getProductID(itemCode));
+        // calling get_product_id and storing restock amount
+        std::string id = std::to_string(get_product_id(itemCode));
         std::cout << "Restock Amount > ";
         std::cin >> restock_amount;
 
@@ -46,7 +46,6 @@ RestockProduct::RestockProduct()
             // checking if product id matches an exisiting id
             if (id == line.substr(0, 4))
             {
-                std::cout << "item exists";
                 std::stringstream ss(line);
                 getline(ss, tempString, ':');
                 itemCode = stoi(tempString);

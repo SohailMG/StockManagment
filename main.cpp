@@ -21,7 +21,7 @@ int main()
     RestockProduct restock_item;
     UpdateStock update_stock;
 
-    bool isvalid, invalid_entry;
+    bool isvalid, invalid_entry,sale_failed;
     int user_quits;
 
     isvalid = true;
@@ -37,14 +37,16 @@ int main()
         // checking menue option chosen by the user
         if (menu_option == 1)
         {
+            // initiating sell product class members
             menue.currentMenu(menu_option);
             sell.readInventory();
             update_stock.delete_old();
             update_stock.update_inventory();
+            
         }
         else if (menu_option == 2)
         {
-
+            // initiating add product class members
             menue.currentMenu(menu_option);
             add.product_info();
 
@@ -53,13 +55,22 @@ int main()
         }
         else if (menu_option == 3)
         {
+            // initiating restock product class members
             menue.currentMenu(menu_option);
             restock_item.readInventory();
             update_stock.delete_old();
             update_stock.update_inventory();
         }
+        else if (menu_option == 4)
+        {
+            // updating  stock 
+            menue.currentMenu(menu_option);
+            update_stock.delete_old();
+            update_stock.update_inventory();
+        }
         else if (menu_option == 5)
         {
+            // initiating sales report class members
             menue.currentMenu(menu_option);
             sell.view_sales();
         }

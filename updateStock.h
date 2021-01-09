@@ -15,7 +15,10 @@
 #define updateStock_H
 
 
-
+/*
+derived class used to update stock levels wheneve 
+a change has been made
+*/
 class UpdateStock : public Product
 {
 public:

@@ -14,7 +14,10 @@
  * 
 */
 
-
+/*
+abstract base class for product attributes with public members to be inherited
+by derived classes
+*/
 class Product
 {
 
@@ -27,8 +30,9 @@ public:
     double itemPrice;
     bool validinpt;
 
-    int getProductID(int itemCode);
-    int showMenu();
+    int get_product_id(int itemCode);
+    void show_product(std::string id);
+    bool valid_inpt();
 };
 
 #endif

@@ -1,7 +1,4 @@
-1022:oil:CD:14:8
-2020:ill:DVD:19:4
-2020:oil:BOOK:13:4
-1121:item:CD:10:20
-1121:oil:CD:19:2
-1222:oil:CD:19:2
-9981:oil:CD:10:19
+1010:oil:CD:12:-8
+1221:dif:CD:12:4
+1022:name:MAGAZINE:12:4
+2222:zues:DVD:13:8

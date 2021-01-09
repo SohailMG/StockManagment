@@ -11,14 +11,17 @@
 Menue::Menue()
 {
 
-    menue   = "-------Main Menue--------";
-    sell    = "-------Sell Item---------";
-    add     = "--------Add Item---------";
-    restock = "------Restock Item-------";
-    update  = "-------Update Item-------";
-    view    = "-------Sales Report------";
+    menue   = "#-------Main Menue--------#";
+    sell    = "#-------Sell Item---------#";
+    add     = "#--------Add Item---------#";
+    restock = "#------Restock Item-------#";
+    update  = "#-------Update Stock------#";
+    view    = "#-------Sales Report------#";
 };
-
+/**
+ * changes menue depending on user input 
+ * @param menu_option menue number chosen by user
+*/
 void Menue::currentMenu(int menu_option)
 {
 
@@ -49,13 +52,18 @@ void Menue::currentMenu(int menu_option)
 
     std::cout << active_menue << std::endl;
 }
+/**
+ * displays menue to the user 
+ *
+ * @returns an integer used for determin menu chosen
+*/
 int Menue::showMenu()
 {
 
     int menu;
     std::cout << " Stock Managment System"
-         << "\n\n"
-         << std::endl;
+              << "\n\n"
+              << std::endl;
     std::cout << " Sell Item--------------- >1" << std::endl;
     std::cout << " Add new item------------ >2" << std::endl;
     std::cout << " Restock Product--------- >3" << std::endl;
