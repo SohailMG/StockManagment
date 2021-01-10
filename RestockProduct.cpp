@@ -32,13 +32,14 @@ void RestockProduct::readInventory()
     }
 
     // calling get_product_id and storing restock amount
-     int id;
+    show_inventory();
+    int id;
     std::cout << "Enter Product ID: " << std::endl;
     std::cin >> id;
     std::cout << "Restock Amount > ";
     std::cin >> restock_amount;
     set_product_id(id);
-    show_product(std::to_string(id));
+    // show_product(std::to_string(id));
 
     // parsing through datafile
     while (getline(datafile, line))

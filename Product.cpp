@@ -50,6 +50,59 @@ void Product::set_product_quantity(int qtty){
     quantity = qtty;
 }
 
+void Product::show_inventory()
+{
+    std::string line;
+    std::string tempString;
+    std::ifstream sales("Inventory.txt");
+    std::cout << "ID"
+              << "\t\t"
+              << "Name"
+              << "\t\t"
+              << "Type"
+              << "\t\t"
+              << "Price"
+              << "\t\t"
+              << "Quantity"
+              << "\t\t" << std::endl;
+    std::cout << "-----------------------------------------------------------" << std::endl;
+    while (getline(sales, line))
+    {
+        if (line == "")
+            continue;
+
+        std::stringstream ss(line);
+        getline(ss, tempString, ':');
+        set_product_id(stoi(tempString));
+
+        std::cout << get_product_id() << "\t\t";
+
+        getline(ss, tempString, ':');
+        set_product_name(tempString);
+
+        std::cout << get_product_name() << "\t\t";
+
+        getline(ss, tempString, ':');
+        set_product_type(tempString);
+
+        std::cout << get_product_type() << "\t\t";
+
+        getline(ss, tempString, ':');
+        set_product_price(stoi(tempString));
+
+
+        std::cout << "£" << get_product_price() << "\t\t";
+
+        getline(ss, tempString, ':');
+        set_product_quantity(stoi(tempString));
+        std::cout << get_product_quantity() << "\t\t";
+
+        std::cout << "\t\t" << '\n';
+    }
+    std::cout << "-----------------------------------------------------------" << std::endl;
+    
+}
+
 /**
  * parses through the datafile and reads custom data of
  * passed id and prints them out to the console.
@@ -57,7 +110,7 @@ void Product::set_product_quantity(int qtty){
 */
 void Product::show_product(std::string id)
 {
-    std::string tempString,line;
+    std::string tmpp,line;
     std::ifstream datafile("Inventory.txt");
     while (getline(datafile, line))
     {
@@ -68,14 +121,14 @@ void Product::show_product(std::string id)
         {
             // updating product quantity that matches item to be sold
             std::stringstream ss(line);
-            getline(ss, tempString, ':');
-            itemCode = stoi(tempString);
+            getline(ss, tmpp, ':');
+            itemCode = stoi(tmpp);
             getline(ss, itemName, ':');
             getline(ss, itemType, ':');
-            getline(ss, tempString, ':');
-            itemPrice = stoi(tempString);
-            getline(ss, tempString, ':');
-            quantity = stoi(tempString) ;
+            getline(ss, tmpp, ':');
+            itemPrice = stoi(tmpp);
+            getline(ss, tmpp, ':');
+            quantity = stoi(tmpp) ;
 
             // printing detials of item sold
             std::cout << "\n\n"
@@ -94,6 +147,7 @@ void Product::show_product(std::string id)
                       << "stock quantity : " << quantity << std::endl;
         }
     }
+    
 }
 /**
  * checks for invalid user input and clears cin  

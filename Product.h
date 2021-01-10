@@ -50,6 +50,7 @@ public:
 
 
     void show_product(std::string id);
+    void show_inventory();
     bool valid_inpt();
 };
 

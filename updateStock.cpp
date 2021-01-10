@@ -27,6 +27,8 @@ UpdateStock::UpdateStock()
             deleted_old = true;
         else
             deleted_old = false;
+        
+        outfile.close();
     }
 
     /**

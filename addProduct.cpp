@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <set>
 #include <algorithm>
@@ -24,6 +25,7 @@ AddProduct::AddProduct(){
     */
 void AddProduct::product_info()
 {
+    
 
     // storing info of new item into a vector
 
