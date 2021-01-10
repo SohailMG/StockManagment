@@ -30,8 +30,8 @@ class RestockProduct : public Product
     int restock_amount;
 
     public:
-    void readInventory();
     RestockProduct();
+    void readInventory();
 
 };
 

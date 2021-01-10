@@ -39,6 +39,9 @@ private:
     std::ofstream outfile;
     std::string tmp;
     bool valid;
+    int id , qntty;
+    std::string name ,itm_type;
+    double price;
 };
 
 #endif

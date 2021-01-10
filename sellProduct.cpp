@@ -33,31 +33,36 @@ void SellProduct::readInventory()
     }
 
     // getting product ID from user and sold quantity
-    std::string id = std::to_string(Product::get_product_id(itemCode));
-    show_product(id);
+    int id;
+    std::cout << "Enter Product ID: ";
+    std::cin >> id;
+    // show_product(std::to_string(id));
+
     std::cout << "Sold Quantity > ";
     std::cin >> sold_quantity;
-
+    set_product_id(id);
 
     while (getline(datafile, line))
     {
         if (line == "")
             continue;
-
-
-        
-        if (id == line.substr(0, 4))
+        if (std::to_string(get_product_id()) == line.substr(0, 4))
         {
-            // updating product quantity that matches item to be sold
             std::stringstream ss(line);
             getline(ss, tempString, ':');
-            itemCode = stoi(tempString);
-            getline(ss, itemName, ':');
-            getline(ss, itemType, ':');
+            set_product_id(stoi(tempString));
+
             getline(ss, tempString, ':');
-            itemPrice = stoi(tempString);
+            set_product_name(tempString);
+
             getline(ss, tempString, ':');
-            quantity = stoi(tempString) - sold_quantity;
+            set_product_type(tempString);
+
+            getline(ss, tempString, ':');
+            set_product_price(stoi(tempString));
+
+            getline(ss, tempString, ':');
+            set_product_quantity(stoi(tempString) - sold_quantity);
 
             // printing detials of item sold
             std::cout << "\n\n"
@@ -65,50 +70,56 @@ void SellProduct::readInventory()
             std::cout << "\t\t"
                       << "Item Sold " << std::endl;
             std::cout << "\t\t"
-                      << "ID    : " << itemCode << std::endl;
+                      << "ID    : " << get_product_id() << std::endl;
             std::cout << "\t\t"
-                      << "Name  : " << itemName << std::endl;
+                      << "Name  : " << get_product_name() << std::endl;
             std::cout << "\t\t"
-                      << "Type  : " << itemType << std::endl;
+                      << "Type  : " << get_product_type() << std::endl;
             std::cout << "\t\t"
-                      << "Price : " << itemPrice << std::endl;
+                      << "Price : " << get_product_price() << std::endl;
 
             // storing data of item sold in a temp file
             tempFile
-                << itemCode << ':'
-                << itemName << ':'
-                << itemType << ':'
-                << itemPrice << ':'
-                << quantity << std::endl;
+                << get_product_id() << ':'
+                << get_product_name() << ':'
+                << get_product_type() << ':'
+                << get_product_price() << ':'
+                << get_product_quantity() << std::endl;
 
             // storing detials of item sold in sales file for sales report
             sales
-                << itemCode << ':'
-                << itemName << ':'
-                << itemType << ':'
-                << itemPrice << ':'
-                << quantity << std::endl;
+                << get_product_id() << ':'
+                << get_product_name() << ':'
+                << get_product_type() << ':'
+                << get_product_price() << ':'
+                << get_product_quantity() << std::endl;
         }
-        if (id != line.substr(0, 4))
+        if (std::to_string(get_product_id()) != line.substr(0, 4))
         {
-            // storing products not matching given id to temp file unchanged
             std::stringstream ss(line);
             getline(ss, tempString, ':');
-            itemCode = stoi(tempString);
-            getline(ss, itemName, ':');
-            getline(ss, itemType, ':');
+            set_product_id(stoi(tempString));
+
             getline(ss, tempString, ':');
-            itemPrice = stoi(tempString);
+            set_product_name(tempString);
+
             getline(ss, tempString, ':');
-            quantity = stoi(tempString);
+            set_product_type(tempString);
+
+            getline(ss, tempString, ':');
+            set_product_price(stoi(tempString));
+
+            getline(ss, tempString, ':');
+            set_product_quantity(stoi(tempString));
 
             tempFile
-                << itemCode << ':'
-                << itemName << ':'
-                << itemType << ':'
-                << itemPrice << ':'
-                << quantity << std::endl;
+                << get_product_id() << ':'
+                << get_product_name() << ':'
+                << get_product_type() << ':'
+                << get_product_price() << ':'
+                << get_product_quantity() << std::endl;
         }
+        show_product(std::to_string(id));
     }
     tempFile.close();
 }
@@ -131,26 +142,28 @@ void SellProduct::view_sales()
                   << "--------Product " << num_of_sold++ << "--------" << std::endl;
         std::stringstream ss(line);
         getline(ss, tempString, ':');
-        itemCode = stoi(tempString);
+        set_product_id(stoi(tempString));
 
         std::cout << "\t\t"
-                  << "ID      : " << itemCode << std::endl;
-
-        getline(ss, itemName, ':');
-
-        std::cout << "\t\t"
-                  << "Name    : " << itemName << std::endl;
-
-        getline(ss, itemType, ':');
-
-        std::cout << "\t\t"
-                  << "Type    : " << itemType << std::endl;
+                  << "ID      : " << get_product_id() << std::endl;
 
         getline(ss, tempString, ':');
-        itemPrice = stoi(tempString);
+        set_product_name(tempString);
 
         std::cout << "\t\t"
-                  << "Price   : £" << itemPrice << std::endl;
+                  << "Name    : " << get_product_name() << std::endl;
+
+        getline(ss, tempString, ':');
+        set_product_type(tempString);
+
+        std::cout << "\t\t"
+                  << "Type    : " << get_product_type() << std::endl;
+
+        getline(ss, tempString, ':');
+        set_product_price(stoi(tempString));
+
+        std::cout << "\t\t"
+                  << "Price   : £" << get_product_price() << std::endl;
 
         std::cout << "\t\t" << '\n';
     }

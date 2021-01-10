@@ -17,3 +17,15 @@ TEST_CASE("test type","[valid_type] "){
     REQUIRE(a.valid_Type("k") == false);
 
 }
+TEST_CASE("test upper","[stringToUpper] "){
+    AddProduct a = AddProduct();
+    REQUIRE(a.stringToUpper("dvd") == "DVD");
+    CHECK_FALSE(a.stringToUpper("dvd") == "dvd");
+
+}
+TEST_CASE("test menu","[stringToUpper] "){
+    Menue m = Menue();
+    int menu = m.showMenu();
+    REQUIRE(menu == 1);
+
+}

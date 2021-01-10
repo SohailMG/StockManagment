@@ -28,8 +28,7 @@ class SellProduct : public Product
     private:
     std::string line , tempString;
     std::vector<std::string> items_sold;
-    int num_of_sold ;
-    int sold_quantity;
+    int num_of_sold ,sold_quantity;
 
     
     

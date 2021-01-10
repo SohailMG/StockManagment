@@ -26,10 +26,11 @@ void AddProduct::product_info()
 {
 
     // storing info of new item into a vector
-    std::cout << " Enter Item Code     : " << std::endl;
-    std::cin >> itemCode;
-    // checks if itemCode matches existing id
-    item_exists(std::to_string(itemCode));
+
+    std::cout << " Enter Product ID: " << std::endl;
+    std::cin >> id;
+    item_exists(std::to_string(id));
+    set_product_id(id);
 
     // checking if input is not an integer
     if (!std::cin)
@@ -44,7 +45,7 @@ void AddProduct::product_info()
     }
 
     // checking if ID is not 4 digits long
-    else if (std::to_string(itemCode).length() != 4)
+    else if (std::to_string(get_product_id()).length() != 4)
     {
         std::cout << "\n\n"
                   << "ID Must be 4 digits...."
@@ -57,26 +58,29 @@ void AddProduct::product_info()
     {
         std::cout << "\n\n"
                   << "item with ID:"
-                  << itemCode
+                  << get_product_id()
                   << " already exists"
                   << std::endl;
     }
     else
     {
-
-        item_data.push_back(std::to_string(itemCode));
+        set_product_id(id);
+        item_data.push_back(std::to_string(get_product_id()));
 
         std::cout << " Enter Item Name     : " << std::endl;
-        std::cin >> itemName;
-        item_data.push_back(itemName);
+        std::cin >> name;
+        set_product_name(name);
+
+        item_data.push_back(get_product_name());
 
         std::cout << " Enter Item Type     : " << std::endl;
-        std::cin >> itemType;
-        itemType = stringToUpper(itemType);
+        std::cin >> itm_type;
+        itm_type = stringToUpper(itm_type);
         // checking if type is either CD DVD Book or Magazine
-        if (!valid_Type(itemType))
+        if (!valid_Type(itm_type))
         {
-            std::cout << "\n\n" << "Invalid Type" << std::endl;
+            std::cout << "\n\n"
+                      << "Invalid Type" << std::endl;
             std::cout << "Accepted Types: CD DVD BOOK MAGAZINE" << std::endl;
             std::cin.clear();
             item_data.clear();
@@ -85,10 +89,12 @@ void AddProduct::product_info()
         else
         {
 
-            item_data.push_back(itemType);
+            set_product_type(itm_type);
+            item_data.push_back(get_product_type());
 
             std::cout << " Enter Item Price    : " << std::endl;
-            std::cin >> itemPrice;
+            std::cin >> price;
+
             if (!valid_inpt())
             {
                 std::cout << "Invalid Price";
@@ -96,12 +102,14 @@ void AddProduct::product_info()
             }
             else
             {
-                tmp = std::to_string(itemPrice);
+                set_product_price(price);
+                tmp = std::to_string(get_product_price());
                 item_data.push_back(tmp.substr(0, 5));
-            }
+            
 
             std::cout << " Enter Item Quantity : " << std::endl;
-            std::cin >> quantity;
+            std::cin >> qntty;
+
             if (!valid_inpt())
             {
                 std::cout << "Invalid Price";
@@ -109,8 +117,10 @@ void AddProduct::product_info()
             }
             else
             {
-                item_data.push_back(std::to_string(quantity));
+                set_product_quantity(qntty);
+                item_data.push_back(std::to_string(get_product_quantity()));
                 item_data.push_back("nl");
+            }
             }
         }
     }
