@@ -15,18 +15,46 @@
 Product::Product()
 {
 }
-/**
- * gets product id from user input
- * @param itemCode 
- * @returns product id as integer
-*/
-int Product::get_product_id(int itemCode)
-{
 
-    std::cout << "Enter Product ID: ";
-    std::cin >> itemCode;
+// getters and setters 
+int Product::get_product_id(){
     return itemCode;
 }
+void Product::set_product_id(int id){
+    itemCode = id;
+}
+std::string Product::get_product_name(){
+    return itemName;
+}
+void Product::set_product_name(std::string name){
+    itemName = name;
+}
+std::string Product::get_product_type(){
+    return itemType;
+}
+void Product::set_product_type(std::string type){
+    itemType = type;
+}
+
+double Product::get_product_price(){
+    return itemPrice;
+}
+void  Product::set_product_price(double price){
+    itemPrice = price;
+}
+int Product::get_product_quantity(){
+    return quantity;
+
+}
+void Product::set_product_quantity(int qtty){
+    quantity = qtty;
+}
+
+/**
+ * parses through the datafile and reads custom data of
+ * passed id and prints them out to the console.
+ * @param id product id
+*/
 void Product::show_product(std::string id)
 {
     std::string tempString,line;
