@@ -24,83 +24,75 @@ RestockProduct::RestockProduct(){
     */
 void RestockProduct::readInventory()
 {
-    std::ofstream tempFile("temp.txt");
-    std::ifstream datafile("Inventory.txt");
-    if (!datafile.is_open())
-    {
-        std::cout << "File failed to open " << std::endl;
-    }
 
-    // calling get_product_id and storing restock amount
-    show_inventory();
-    int id;
-    std::cout << "Enter Product ID: " << std::endl;
-    std::cin >> id;
-    std::cout << "Restock Amount > ";
-    std::cin >> restock_amount;
-    set_product_id(id);
-    // show_product(std::to_string(id));
-
-    // parsing through datafile
-    while (getline(datafile, line))
-    {
-        if (line == "")
-            continue;
-
-        // checking if product id matches an exisiting id
-        if (std::to_string(get_product_id()) == line.substr(0, 4))
-        {
-            std::stringstream ss(line);
-            getline(ss, tempString, ':');
-            set_product_id(stoi(tempString));
-
-            getline(ss, tempString, ':');
-            set_product_name(tempString);
-
-            getline(ss, tempString, ':');
-            set_product_type(tempString);
-
-            getline(ss, tempString, ':');
-            set_product_price(stoi(tempString));
-
-            getline(ss, tempString, ':');
-            set_product_quantity(stoi(tempString) + restock_amount);
-
-            // storing line corrosponding to product in a temp file after restock
-            tempFile
-                << get_product_id() << ':'
-                << get_product_name() << ':'
-                << get_product_type() << ':'
-                << get_product_price() << ':'
-                << get_product_quantity() << std::endl;
-        }
-        // storing products not matching given ID in temp file unmodified
-        if (std::to_string(get_product_id()) != line.substr(0, 4))
-        {
-            std::stringstream ss(line);
-            getline(ss, tempString, ':');
-            set_product_id(stoi(tempString));
-
-            getline(ss, tempString, ':');
-            set_product_name(tempString);
-
-            getline(ss, tempString, ':');
-            set_product_type(tempString);
-
-            getline(ss, tempString, ':');
-            set_product_price(stoi(tempString));
-
-            getline(ss, tempString, ':');
-            set_product_quantity(stoi(tempString));
-
-            tempFile
-                << get_product_id() << ':'
-                << get_product_name() << ':'
-                << get_product_type() << ':'
-                << get_product_price() << ':'
-                << get_product_quantity() << std::endl;
-        }
-        show_product(std::to_string(id));
-    }
-    tempFile.close();
-}
+    std::string line , tempString;
+    std::string id;
+    // opening a temp file to store modified data temperarly   std::ofstream tempFile("temp.txt");
+       // opening a temp file to store modified data temperarly
+       std::ofstream tempFile("temp.txt");
+       std::ifstream datafile("Inventory.txt");
+       std::ofstream sales("sales.txt", std::ios_base::app);
+       if (!datafile.is_open())
+       {
+           std::cout << "File failed to open " << std::endl;
+       }
+       // getting product ID from user and sold quantity
+       show_inventory();
+       std::cout << "Enter Product ID: " << std::endl;
+       std::cin >> id;
+       std::cout << "Restock Amount > ";
+       std::cin >> restock_amount;
+       while ( getline(datafile, line))
+       {
+           if (line == "") continue;
+           if (id == line.substr(0, 4))
+           {
+               std::stringstream ss(line);
+               getline(ss, tempString, ':');
+               set_product_id(stoi(tempString));
+               getline(ss, tempString,   ':');
+               set_product_name(tempString);
+               getline(ss, tempString,   ':');
+               set_product_type(tempString);
+               getline(ss, tempString, ':');
+               set_product_price(stoi(tempString));
+               getline(ss, tempString, ':');
+               set_product_quantity(stoi(tempString) + restock_amount);
+               // printing detials of item sold 
+               std::cout << "Item Sold " << std::endl;
+               std::cout << "ID    : "  << get_product_id()<< std::endl;
+               std::cout << "Name  : "  << get_product_name()<< std::endl;
+               std::cout << "Type  : "  << get_product_type()<< std::endl;
+               std::cout << "Price : "  << get_product_price()<< std::endl;
+               // storing data of item sold in a temp file
+               tempFile
+                   << get_product_id() << ':'
+                   << get_product_name() << ':'
+                   << get_product_type() << ':'
+                   << get_product_price() << ':'
+                   << get_product_quantity() << std::endl;
+               
+           }
+           if (id != line.substr(0, 4))
+           {
+               std::stringstream ss(line);
+               getline(ss, tempString, ':');
+               set_product_id(stoi(tempString));
+               getline(ss, tempString,   ':');
+               set_product_name(tempString);
+               getline(ss, tempString,   ':');
+               set_product_type(tempString);
+               getline(ss, tempString, ':');
+               set_product_price(stoi(tempString));
+               getline(ss, tempString, ':');
+               set_product_quantity(stoi(tempString));
+               tempFile
+                   << get_product_id() << ':'
+                   << get_product_name() << ':'
+                   << get_product_type() << ':'
+                   << get_product_price() << ':'
+                   << get_product_quantity() << std::endl;
+           }
+       }
+       tempFile.close();  
+       }

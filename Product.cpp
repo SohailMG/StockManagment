@@ -129,22 +129,6 @@ void Product::show_product(std::string id)
             itemPrice = stoi(tmpp);
             getline(ss, tmpp, ':');
             quantity = stoi(tmpp) ;
-
-            // printing detials of item sold
-            std::cout << "\n\n"
-                      << std::endl;
-            std::cout << "\t\t"
-                      << "Item details " << std::endl;
-            std::cout << "\t\t"
-                      << "ID             : " << itemCode << std::endl;
-            std::cout << "\t\t"         
-                      << "Name           : " << itemName << std::endl;
-            std::cout << "\t\t"         
-                      << "Type           : " << itemType << std::endl;
-            std::cout << "\t\t"         
-                      << "Price          :£" << itemPrice << std::endl;
-            std::cout << "\t\t"
-                      << "stock quantity : " << quantity << std::endl;
         }
     }
     

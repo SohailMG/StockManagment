@@ -23,9 +23,7 @@ class RestockProduct : public Product
 
 
     private:
-    std::string line , tempString;
     std::ofstream outfile;
-    std::ifstream temp;
     bool deleted_old;
     int restock_amount;
 
