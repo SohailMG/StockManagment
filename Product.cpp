@@ -50,6 +50,10 @@ void Product::set_product_quantity(int qtty){
     quantity = qtty;
 }
 
+/**
+ * parses through the inventory file and displays
+ * data of all currently stored items as a table 
+*/
 void Product::show_inventory()
 {
     std::string line;

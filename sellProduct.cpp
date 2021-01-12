@@ -25,7 +25,7 @@ void SellProduct::readInventory()
 {
     std::string line , tempString;
     std::string id;
-    // opening a temp file to store modified data temperarly   std::ofstream tempFile("temp.txt");
+       // opening a temp file to store modified data temperarly  
        // opening a temp file to store modified data temperarly
        std::ofstream tempFile("temp.txt");
        std::ifstream datafile("Inventory.txt");
@@ -34,7 +34,8 @@ void SellProduct::readInventory()
        {
            std::cout << "File failed to open " << std::endl;
        }
-       // getting product ID from user and sold quantity
+
+       // displaying table of current stock details
        show_inventory();
        std::cout << "Enter Product ID: " << std::endl;
        std::cin >> id;
