@@ -24,6 +24,7 @@ class SellProduct : public Product
     SellProduct();
     void readInventory();
     void view_sales();
+    bool empty_stock;
 
     private:
     std::string line , tempString;

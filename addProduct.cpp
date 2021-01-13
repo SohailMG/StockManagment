@@ -122,6 +122,9 @@ void AddProduct::product_info()
                 set_product_quantity(qntty);
                 item_data.push_back(std::to_string(get_product_quantity()));
                 item_data.push_back("nl");
+
+                std::cout << "\n"<<"Item has been saved" << "\n" << std::endl;
+            
             }
             }
         }

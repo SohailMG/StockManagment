@@ -7,10 +7,6 @@
 #include "Product.h"
 #include "menu.h"
 
-
-
-
-
 int main()
 {
     // instantiating class objects
@@ -21,7 +17,7 @@ int main()
     RestockProduct restock_item;
     UpdateStock update_stock;
 
-    bool isvalid, invalid_entry,sale_failed;
+    bool isvalid, invalid_entry, sale_failed;
     int user_quits;
 
     isvalid = true;
@@ -29,10 +25,11 @@ int main()
     while (isvalid)
     {
         // displaying menue to the console
-        std::cout << '\n' << std::endl;
+        std::cout << '\n'
+                  << std::endl;
         int menu_option = menue.showMenu();
         std::cout << "\n\n"
-             << std::endl;
+                  << std::endl;
 
         // checking menue option chosen by the user
         if (menu_option == 1)
@@ -40,9 +37,15 @@ int main()
             // initiating sell product class members
             menue.currentMenu(menu_option);
             sell.readInventory();
-            update_stock.delete_old();
-            update_stock.update_inventory();
-            
+            if (product.valid_inpt() && !sell.empty_stock)
+            {
+                update_stock.delete_old();
+                update_stock.update_inventory();
+            }
+            else
+            {
+                std::cout << "invalid entry" << std::endl;
+            }
         }
         else if (menu_option == 2)
         {
@@ -51,6 +54,7 @@ int main()
             add.product_info();
 
             add.store_product();
+            product.show_inventory();
             add.item_data.clear();
         }
         else if (menu_option == 3)
@@ -58,12 +62,19 @@ int main()
             // initiating restock product class members
             menue.currentMenu(menu_option);
             restock_item.readInventory();
-            update_stock.delete_old();
-            update_stock.update_inventory();
+            if (product.valid_inpt())
+            {
+                update_stock.delete_old();
+                update_stock.update_inventory();
+            }
+            else
+            {
+                std::cout << "invalid entry" << std::endl;
+            }
         }
         else if (menu_option == 4)
         {
-            // updating  stock 
+            // updating  stock
             menue.currentMenu(menu_option);
             update_stock.delete_old();
             update_stock.update_inventory();
@@ -77,7 +88,7 @@ int main()
         else if (menu_option == 6)
         {
             std::cout << "\n"
-                 << "Exited Program...." << std::endl;
+                      << "Exited Program...." << std::endl;
             isvalid = false;
         }
 
@@ -88,7 +99,7 @@ int main()
             while (invalid_entry)
             {
                 std::cout << '\n'
-                     << "Continue..... 0 > " << std::endl;
+                          << "Continue..... 0 > " << std::endl;
                 std::cout << "Quit......... 1 > " << std::endl;
                 std::cout << "> ";
                 std::cin >> user_quits;

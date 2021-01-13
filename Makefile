@@ -1,4 +1,4 @@
-CXXFLAGS += -w
+CXXFLAGS += -w -g -Wall -Wextra
 CXX = g++
 RM = rm -rf 
 OBJS = main.o Product.o addProduct.o sellProduct.o RestockProduct.o updateStock.o menu.o

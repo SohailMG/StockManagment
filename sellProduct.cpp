@@ -23,93 +23,107 @@ SellProduct::SellProduct()
 */
 void SellProduct::readInventory()
 {
-    std::string line , tempString;
+    std::string line, tempString;
     std::string id;
-       // opening a temp file to store modified data temperarly  
-       // opening a temp file to store modified data temperarly
-       std::ofstream tempFile("temp.txt");
-       std::ifstream datafile("Inventory.txt");
-       std::ofstream sales("sales.txt", std::ios_base::app);
+    // opening a temp file to store modified data temperarly
+    // opening a temp file to store modified data temperarly
+    std::ofstream tempFile("temp.txt");
+    std::ifstream datafile("Inventory.txt");
+    std::ofstream sales("sales.txt", std::ios_base::app);
        if (!datafile.is_open())
        {
            std::cout << "File failed to open " << std::endl;
        }
+    // displaying table of current stock details
+    show_inventory();
+    std::cout << "Enter Product ID: " << std::endl;
+    std::cin >> id;
+    std::cout << "Sold Quantity > ";
+    std::cin >> sold_quantity;
+    while (getline(datafile, line))
+    {
+        if (line == "")
+            continue;
+        if (id == line.substr(0, 4))
+        {
+            std::stringstream ss(line);
+            getline(ss, tempString, ':');
+            set_product_id(stoi(tempString));
+            getline(ss, tempString, ':');
+            set_product_name(tempString);
+            getline(ss, tempString, ':');
+            set_product_type(tempString);
+            getline(ss, tempString, ':');
+            set_product_price(stoi(tempString));
+            getline(ss, tempString, ':');
 
-       // displaying table of current stock details
-       show_inventory();
-       std::cout << "Enter Product ID: " << std::endl;
-       std::cin >> id;
-       std::cout << "Sold Quantity > ";
-       std::cin >> sold_quantity;
-       while ( getline(datafile, line))
-       {
-           if (line == "") continue;
-           if (id == line.substr(0, 4))
-           {
-               std::stringstream ss(line);
-               getline(ss, tempString, ':');
-               set_product_id(stoi(tempString));
-               getline(ss, tempString,   ':');
-               set_product_name(tempString);
-               getline(ss, tempString,   ':');
-               set_product_type(tempString);
-               getline(ss, tempString, ':');
-               set_product_price(stoi(tempString));
-               getline(ss, tempString, ':');
-               set_product_quantity(stoi(tempString) - sold_quantity);
-               // printing detials of item sold 
-               std::cout << "Item Sold " << std::endl;
-               std::cout << "ID    : "  << get_product_id()<< std::endl;
-               std::cout << "Name  : "  << get_product_name()<< std::endl;
-               std::cout << "Type  : "  << get_product_type()<< std::endl;
-               std::cout << "Price : "  << get_product_price()<< std::endl;
-               // storing data of item sold in a temp file
-               tempFile
-                   << get_product_id() << ':'
-                   << get_product_name() << ':'
-                   << get_product_type() << ':'
-                   << get_product_price() << ':'
-                   << get_product_quantity() << std::endl;
-               // storing detials of item sold in sales file for sales report    
-               sales
-                   << get_product_id() << ':'
-                   << get_product_name() << ':'
-                   << get_product_type() << ':'
-                   << get_product_price() << ':'
-                   << get_product_quantity() << std::endl;
-               
-           }
-           if (id != line.substr(0, 4))
-           {
-               std::stringstream ss(line);
-               getline(ss, tempString, ':');
-               set_product_id(stoi(tempString));
-               getline(ss, tempString,   ':');
-               set_product_name(tempString);
-               getline(ss, tempString,   ':');
-               set_product_type(tempString);
-               getline(ss, tempString, ':');
-               set_product_price(stoi(tempString));
-               getline(ss, tempString, ':');
-               set_product_quantity(stoi(tempString));
-               tempFile
-                   << get_product_id() << ':'
-                   << get_product_name() << ':'
-                   << get_product_type() << ':'
-                   << get_product_price() << ':'
-                   << get_product_quantity() << std::endl;
-           }
-       }
-       tempFile.close();
-       std::cout << "File failed to open " << std::endl;   
-       }
+            set_product_quantity(stoi(tempString));
+            int new_quantity = get_product_quantity() - sold_quantity;
+            if (new_quantity < 0)
+            {
+                std::cout << "\n"
+                          << "Operation failed, item needs restock"
+                          << "\n"
+                          << std::endl;
+                empty_stock = true;
+            }
+            else
+            {
+                empty_stock = false;
+
+                set_product_quantity(stoi(tempString) - sold_quantity);
+                // printing detials of item sold
+                std::cout << "Item Sold " << std::endl;
+                std::cout << "ID    : " << get_product_id() << std::endl;
+                std::cout << "Name  : " << get_product_name() << std::endl;
+                std::cout << "Type  : " << get_product_type() << std::endl;
+                std::cout << "Price : " << get_product_price() << std::endl;
+                // storing data of item sold in a temp file
+                tempFile
+                    << get_product_id() << ':'
+                    << get_product_name() << ':'
+                    << get_product_type() << ':'
+                    << get_product_price() << ':'
+                    << get_product_quantity() << std::endl;
+                // storing detials of item sold in sales file for sales report
+                sales
+                    << get_product_id() << ':'
+                    << get_product_name() << ':'
+                    << get_product_type() << ':'
+                    << get_product_price() << ':'
+                    << get_product_quantity() << std::endl;
+            }
+        }
+        if (id != line.substr(0, 4) && !empty_stock)
+        {
+            std::stringstream ss(line);
+            getline(ss, tempString, ':');
+            set_product_id(stoi(tempString));
+            getline(ss, tempString, ':');
+            set_product_name(tempString);
+            getline(ss, tempString, ':');
+            set_product_type(tempString);
+            getline(ss, tempString, ':');
+            set_product_price(stoi(tempString));
+            getline(ss, tempString, ':');
+            set_product_quantity(stoi(tempString));
+            tempFile
+                << get_product_id() << ':'
+                << get_product_name() << ':'
+                << get_product_type() << ':'
+                << get_product_price() << ':'
+                << get_product_quantity() << std::endl;
+        }
+    }
+    tempFile.close();
+}
 /**
  opens sales file and reads all strings seperate by a colon then prints
  it's content into the console
 */
 void SellProduct::view_sales()
 {
-    std::string line , tempString;
+    std::string line, tempString;
 
     std::ifstream sales("sales.txt");
     std::cout << "ID"

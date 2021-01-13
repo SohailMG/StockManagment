@@ -1,5 +1,2 @@
-1010:oil:CD:10:13
-2020:iol:DVD:10:1
-1999:iuu:DVD:10:12
-1090:iueee:BOOK:4:11
-8888:iue:DVD:34:7
+1982:oil:CD:13:-1
+1882:iudd:DVD:10:0
