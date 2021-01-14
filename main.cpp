@@ -6,6 +6,24 @@
 #include <iostream>
 #include <string>
 
+
+/*
+    checks for mismatch input
+    @returns true if input is  valid type and false otherwise
+*/
+bool valid_input(){
+
+    if(!std::cin){
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+
+    }else{
+        return true;
+    }
+
+}
+
 int check_catagory()
 {
     int catagory;
@@ -19,8 +37,14 @@ int check_catagory()
 
     std::cout << "Choose Catagory > ";
     std::cin >> catagory;
+    if(!valid_input()){
+        std::cout << catagory <<" must be an Integer" << std::endl;
+
+    }else{
 
     return catagory;
+    }
+
 }
 
 int main()
@@ -48,6 +72,12 @@ int main()
         std::cout << " Quit Program------------ >6" << std::endl;
         std::cout << " Choose an Option > ";
         std::cin >> menu;
+
+        if(!valid_input()){
+            std::cout << "\n" << std::endl;
+            std::cout<< "Please enter an Integer " << std::endl;
+
+        }else{
 
         // checking if user chooses to sell items
         if (menu == 1)
@@ -178,6 +208,7 @@ int main()
             std::cout << "\n"
                       << std::endl;
             std::cout << menu << "Is out of range" << std::endl;
+        }
         }
     }
 
