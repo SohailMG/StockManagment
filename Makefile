@@ -1,7 +1,7 @@
 CXXFLAGS += -w -g -Wall -Wextra
 CXX = g++
 RM = rm -rf 
-OBJS = main.o Product.o addProduct.o sellProduct.o RestockProduct.o updateStock.o menu.o
+OBJS = main.o Product.o CD.o DVD.o Book.o Magazines.o 
 
 .PHONY = all
 all: Program
@@ -14,16 +14,14 @@ main.o: main.cpp
 		$(CXX) $(CXXFLAGS) -c main.cpp
 Product.o: Product.cpp Product.h
 		$(CXX) $(CXXFLAGS) -c Product.cpp
-addProduct.o: addProduct.cpp addProduct.h
-		$(CXX) $(CXXFLAGS) -c addProduct.cpp
-sellProduct.o: sellProduct.cpp sellProduct.h
-		$(CXX) $(CXXFLAGS) -c sellProduct.cpp
-RestockProduct.o: RestockProduct.cpp RestockProduct.h
-		$(CXX) $(CXXFLAGS) -c RestockProduct.cpp
-updateStock.o: updateStock.cpp updateStock.h
-		$(CXX) $(CXXFLAGS) -c updateStock.cpp
-menu.o: menu.cpp menu.h
-		$(CXX) $(CXXFLAGS) -c menu.cpp
+CD.o: CD.cpp CD.h
+		$(CXX) $(CXXFLAGS) -c CD.cpp
+DVD.o: DVD.cpp DVD.h
+		$(CXX) $(CXXFLAGS) -c DVD.cpp
+Book.o: Book.cpp Book.h
+		$(CXX) $(CXXFLAGS) -c Book.cpp
+Magazines.o: Magazines.cpp Magazines.h
+		$(CXX) $(CXXFLAGS) -c Magazines.cpp
 
 
 .PHONY : clean

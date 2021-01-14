@@ -1,138 +1,173 @@
+#include "Product.h"
+#include "book.h"
+#include "CD.h"
+#include "Magazines.h"
+#include "DVD.h"
 #include <iostream>
 #include <string>
-#include "updateStock.h"
-#include "addProduct.h"
-#include "sellProduct.h"
-#include "RestockProduct.h"
-#include "Product.h"
-#include "menu.h"
+
+int check_catagory()
+{
+    int catagory;
+
+    std::cout << "\n"
+              << std::endl;
+    std::cout << " CD           >1" << std::endl;
+    std::cout << " DVD          >2" << std::endl;
+    std::cout << " BOOKs        >3" << std::endl;
+    std::cout << " MAGAZINEs    >4" << std::endl;
+
+    std::cout << "Choose Catagory > ";
+    std::cin >> catagory;
+
+    return catagory;
+}
 
 int main()
 {
-    // instantiating class objects
     Product product;
-    Menue menue;
-    SellProduct sell;
-    AddProduct add;
-    RestockProduct restock_item;
-    UpdateStock update_stock;
+    Books books;
+    CDs CDs;
+    DVD DVDs;
+    Magazines magazines;
 
-    bool isvalid, invalid_entry, sale_failed;
-    int user_quits;
+    int menu;
+    bool user_quits = false;
 
-    isvalid = true;
-
-    while (isvalid)
+    while (!user_quits)
     {
-        // displaying menue to the console
-        std::cout << '\n'
-                  << std::endl;
-        int menu_option = menue.showMenu();
-        std::cout << "\n\n"
-                  << std::endl;
 
-        // checking menue option chosen by the user
-        if (menu_option == 1)
+        std::cout << " Stock Managment System"
+                  << "\n\n"
+                  << std::endl;
+        std::cout << " Sell Item--------------- >1" << std::endl;
+        std::cout << " Add new item------------ >2" << std::endl;
+        std::cout << " Restock Product--------- >3" << std::endl;
+        std::cout << " Update Stock------------ >4" << std::endl;
+        std::cout << " View Reports------------ >5" << std::endl;
+        std::cout << " Quit Program------------ >6" << std::endl;
+        std::cout << " Choose an Option > ";
+        std::cin >> menu;
+
+        // checking if user chooses to sell items
+        if (menu == 1)
         {
-            // initiating sell product class members
-            menue.currentMenu(menu_option);
-            sell.readInventory();
-            if (product.valid_inpt() && !sell.empty_stock)
+            // checking which catagory user chooses CD DVD BOOKS or MAGAZINEs
+            int catg = check_catagory();
+            if (catg == 1)
             {
-                update_stock.delete_old();
-                update_stock.update_inventory();
+                CDs.show_inventory();
+                CDs.sell_CD(product.sell_product());
+                product.update_stock("CDs.txt");
+                CDs.show_inventory();
+            }
+            else if (catg == 2)
+            {
+                DVDs.show_inventory();
+                DVDs.sell_DVD(product.sell_product());
+                product.update_stock("DVDs.txt");
+                DVDs.show_inventory();
+            }
+            else if (catg == 3)
+            {
+                books.show_inventory();
+                books.sell_book(product.sell_product());
+                product.update_stock("Books.txt");
+                books.show_inventory();
+            }
+            else if (catg == 4)
+            {
+                magazines.show_inventory();
+                magazines.sell_Magazine(product.sell_product());
+                product.update_stock("Magazines.txt");
+                magazines.show_inventory();
             }
             else
             {
-                std::cout << "invalid entry" << std::endl;
+                std::cout << "Invalid" << std::endl;
             }
         }
-        else if (menu_option == 2)
+        else if (menu == 2)
         {
-            // initiating add product class members
-            menue.currentMenu(menu_option);
-            add.product_info();
-
-            add.store_product();
-            product.show_inventory();
-            add.item_data.clear();
-        }
-        else if (menu_option == 3)
-        {
-            // initiating restock product class members
-            menue.currentMenu(menu_option);
-            restock_item.readInventory();
-            if (product.valid_inpt())
+            int catg = check_catagory();
+            if (catg == 1)
             {
-                update_stock.delete_old();
-                update_stock.update_inventory();
+                CDs.add_CD_details();
             }
+            else if (catg == 2)
+            {
+                DVDs.add_DVD_details();
+            }
+            else if (catg == 3)
+            {
+                books.add_book_details();
+            }
+            else if (catg == 4)
+            {
+                magazines.add_Magazine_details();
+            }
+
             else
             {
-                std::cout << "invalid entry" << std::endl;
+                std::cout << "Invalid" << std::endl;
             }
         }
-        else if (menu_option == 4)
+        else if (menu == 3)
         {
-            // updating  stock
-            menue.currentMenu(menu_option);
-            update_stock.delete_old();
-            update_stock.update_inventory();
+            int catg = check_catagory();
+            if (catg == 1)
+            {
+                CDs.show_inventory();
+                CDs.restock_CD(product.restock_product());
+                product.update_stock("CDs.txt");
+                CDs.show_inventory();
+            }
+            else if (catg == 2)
+            {
+                DVDs.show_inventory();
+                DVDs.restock_DVD(product.restock_product());
+                product.update_stock("DVDs.txt");
+                DVDs.show_inventory();
+            }
+            else if (catg == 3)
+            {
+                books.show_inventory();
+                books.restock_book(product.restock_product());
+                product.update_stock("Books.txt");
+                books.show_inventory();
+            }
+            else if (catg == 4)
+            {
+                magazines.show_inventory();
+                magazines.restock_magazines(product.restock_product());
+                product.update_stock("Magazines.txt");
+                magazines.show_inventory();
+            }
+
+            else
+            {
+                std::cout << "Catagory " << catg << " Is unrecognised" << std::endl;
+            }
         }
-        else if (menu_option == 5)
-        {
-            // initiating sales report class members
-            menue.currentMenu(menu_option);
-            sell.view_sales();
-        }
-        else if (menu_option == 6)
+        else if (menu == 4)
         {
             std::cout << "\n"
-                      << "Exited Program...." << std::endl;
-            isvalid = false;
+                      << "\t\t"
+                      << "**Stock has been updated**" << std::endl;
         }
-
-        // adding an option to check if user wants to quit program
-        if (menu_option != 6)
+        else if (menu == 5)
         {
-            invalid_entry = true;
-            while (invalid_entry)
-            {
-                std::cout << '\n'
-                          << "Continue..... 0 > " << std::endl;
-                std::cout << "Quit......... 1 > " << std::endl;
-                std::cout << "> ";
-                std::cin >> user_quits;
-
-                // checking if input is not an integer
-                if (!std::cin)
-                {
-                    std::cout << "Invalid Input try again " << std::endl;
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    invalid_entry = true;
-                }
-                else
-                {
-                    // checking if input is 0 then user continues else program ends
-                    switch (user_quits)
-                    {
-                    case 0:
-                        invalid_entry = false;
-                        isvalid = true;
-                        break;
-                    case 1:
-                        invalid_entry = false;
-                        isvalid = false;
-                        break;
-
-                    default:
-                        invalid_entry = true;
-                        std::cout << user_quits << " is Out of range choose 1 or 0" << std::endl;
-                        break;
-                    }
-                }
-            }
+            product.view_sales();
+        }
+        else if (menu == 6)
+        {
+            user_quits = true;
+        }
+        else
+        {
+            std::cout << "\n"
+                      << std::endl;
+            std::cout << menu << "Is out of range" << std::endl;
         }
     }
 
