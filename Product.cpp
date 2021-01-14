@@ -12,10 +12,18 @@
  * 
 */
 
+/**
+ * abstract base class contains all methods and attributes
+ * to be inherited by derived classes
+*/
 Product::Product()
 {
 }
 
+/*
+  stores common product details of each product
+  such as ID price and quantity
+*/
 void Product::add_product()
 {
 
@@ -58,8 +66,12 @@ void Product::add_product()
     item_data.push_back(std::to_string(item_quantity));
 }
 
-// looping through vector and writing new item data into a file
-
+/**
+ * loops through a vectory of product details and 
+ * stores it's elements into a file 
+ * 
+ * @param location is the file location where item is stored
+*/
 void Product::store_product(std::string location)
 {
     std::fstream outfile;
@@ -78,6 +90,10 @@ void Product::store_product(std::string location)
     }
     outfile.close();
 }
+/**
+ * stores the id of the product to be sold
+ * @returns an integer id of product
+*/
 int Product::sell_product()
 {
     int id;
@@ -86,6 +102,11 @@ int Product::sell_product()
 
     return id;
 }
+/**
+ * stores the id of the product being used
+ * to restock
+ * @returns an integer id of product
+*/
 int Product::restock_product()
 {
     int id;
@@ -98,13 +119,20 @@ int Product::restock_product()
     return id;
 }
 
+/**
+ * this is used remove a given file after product
+ * in that file has been modified. then that file
+ * is recreated with updated product detials
+ * 
+ * @param localtion is the file being updated
+*/
 void Product::update_stock(std::string location)
 {
     std::string lines;
     std::ofstream outfile;
-
     bool deleted_old;
 
+    // deleted outdated version of the file
     outfile.open(location, std::ios_base::app);
     if (remove(location.c_str()))
         deleted_old = true;
@@ -113,9 +141,11 @@ void Product::update_stock(std::string location)
 
     outfile.close();
 
+    // opening a temp file with updated details 
     std::ifstream temp("temp.txt");
     if (deleted_old)
     {
+        // recreating file and adding updated details
         outfile.open(location, std::ios_base::app);
     }
     while (getline(temp, lines))
@@ -131,12 +161,17 @@ void Product::update_stock(std::string location)
     std::cout << "\t"
               << " *Stock Has been Update*" << std::endl;
 }
+
+/*
+    parses through a sales file and prints 
+    it's content in a custom table.
+*/
 void Product::view_sales(){
 
     std::string line, tempString;
 
     std::ifstream sales("sales.txt");
-    
+
     std::cout << "\n";
     std::cout << "ID"
               << "\t\t"
@@ -194,7 +229,6 @@ void Product::set_product_name(std::string name)
 {
     item_name = name;
 }
-
 double Product::get_product_price()
 {
     return item_price;

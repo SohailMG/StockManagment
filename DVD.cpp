@@ -4,11 +4,27 @@
 #include <fstream>
 #include <string>
 #include <vector>
+/**
+ * DVD.cpp
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 
+/*
+    DVD derived class form products and contains
+    all methods and attributes of DVD such as
+    title,year released and dvd catagory.
+*/
 DVD::DVD()
 {
 }
-
+/**
+ * inherits the add_product() method from abstract class
+ * and add title,year released,and catagory of DVD into the
+ * item_data vector.
+*/
 void DVD::add_DVD_details()
 {
     add_product();
@@ -27,6 +43,15 @@ void DVD::add_DVD_details()
 
     store_product("DVDs.txt");
 }
+
+/**
+ * parses through a file of DVD data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is decreased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be sold
+*/
 void DVD::sell_DVD(int id)
 {
     int sold_amount;
@@ -129,6 +154,14 @@ void DVD::sell_DVD(int id)
         }
     }
 }
+/**
+ * parses through a file of DVD data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is increased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be restocked
+*/
 void DVD::restock_DVD(int id)
 {
     int restock_amount;
@@ -214,6 +247,11 @@ void DVD::restock_DVD(int id)
         }
     }
 }
+
+/*
+    parses through datafile and prints its
+    content into the console as a table
+*/
 void DVD::show_inventory()
 {
     std::string line;

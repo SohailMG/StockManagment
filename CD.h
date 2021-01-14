@@ -3,6 +3,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
+/**
+ * CD.h
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 
 class CDs : public Product
 {

@@ -4,11 +4,30 @@
 #include <fstream>
 #include <string>
 #include <vector>
+/**
+ * Magazines.cpp
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 
+
+/*
+    derived class from products which contains
+    all methods and attributes relating to magazine
+    such as person on conver,comapny,and genre.
+
+*/
 Magazines::Magazines()
 {
 }
 
+/**
+ * inherits the add_product() method from abstract class
+ * and add person on cover,company,and genre of Magazine into the
+ * item_data vector.
+*/
 void Magazines::add_Magazine_details()
 {
     add_product();
@@ -27,6 +46,14 @@ void Magazines::add_Magazine_details()
 
     store_product("Magazines.txt");
 }
+/**
+ * parses through a file of Magazines data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is Increased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be sold
+*/
 void Magazines::sell_Magazine(int id)
 {
     int sold_quantity;
@@ -111,6 +138,14 @@ void Magazines::sell_Magazine(int id)
     }
 }
 
+/**
+ * parses through a file of Magazine data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is increased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be restocked
+*/
 void Magazines::restock_magazines(int id)
 {
     int restock_amount;
@@ -188,7 +223,10 @@ void Magazines::restock_magazines(int id)
         }
     }
 }
-
+/*
+    parses through datafile and prints its
+    content into the console as a table
+*/
 void Magazines::show_inventory()
 {
     std::string line;

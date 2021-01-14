@@ -4,11 +4,28 @@
 #include <fstream>
 #include <string>
 #include <vector>
+/**
+ * Book.cpp
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 
+/*
+    derived class Books represents
+    the methods and attributes for a book
+    such as Author,title..etc
+*/
 Books::Books()
 {
 }
 
+/**
+ * inherits the add_product() method from abstract class
+ * and add title,author,and genre of books into the
+ * item_data vector.
+*/
 void Books::add_book_details()
 {
 
@@ -29,6 +46,14 @@ void Books::add_book_details()
     store_product("Books.txt");
 }
 
+/**
+ * parses through a file of book data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is decreased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be sold
+*/
 void Books::sell_book(int id)
 {
 
@@ -123,6 +148,14 @@ void Books::sell_book(int id)
     }
     sales.close();
 }
+/**
+ * parses through a file of book data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is increased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be restocked
+*/
 void Books::restock_book(int id)
 {
     int restock_amount;
@@ -134,8 +167,10 @@ void Books::restock_book(int id)
     std::cin >> restock_amount;
     while (getline(datafile, line))
     {
+        // ignoring emtpy first line of file
         if (line == "")
             continue;
+         //checking if id matches a stored item
         if (std::to_string(id) == line.substr(0, 4))
         {
 
@@ -164,6 +199,7 @@ void Books::restock_book(int id)
             getline(ss, tempString, ':'); //genre
             genre = tempString;
 
+            // writing modified data into a temp file
             tempFile
                 << get_product_id() << ':'
                 << get_product_name() << ':'
@@ -174,17 +210,9 @@ void Books::restock_book(int id)
                 << author << ':'
                 << genre << ':'
                 << std::endl;
-            std::cout
-                << get_product_id() << ':'
-                << get_product_name() << ':'
-                << get_product_type() << ':'
-                << get_product_price() << ':'
-                << get_product_quantity() << ':'
-                << title << ':'
-                << author << ':'
-                << genre << ':'
-                << std::endl;
+
         }
+        // storing products not matching given id into temp file unchanged
         if (std::to_string(id) != line.substr(0, 4))
         {
             std::stringstream ss(line);
@@ -205,17 +233,8 @@ void Books::restock_book(int id)
             getline(ss, tempString, ':'); //genre
             genre = tempString;
 
+            // writing unmodified data into tmep file
             tempFile
-                << get_product_id() << ':'
-                << get_product_name() << ':'
-                << get_product_type() << ':'
-                << get_product_price() << ':'
-                << get_product_quantity() << ':'
-                << title << ':'
-                << author << ':'
-                << genre << ':'
-                << std::endl;
-            std::cout
                 << get_product_id() << ':'
                 << get_product_name() << ':'
                 << get_product_type() << ':'
@@ -229,7 +248,10 @@ void Books::restock_book(int id)
     }
     tempFile.close();
 }
-
+/*
+    parses through datafile and prints its
+    content into the console as a table
+*/
 void Books::show_inventory()
 {
     std::string line;

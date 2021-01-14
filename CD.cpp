@@ -4,11 +4,28 @@
 #include <fstream>
 #include <string>
 #include <vector>
+/**
+ * CD.cpp
+ * @author M00716650 <sg1498@live.mdx.ac.uk>
+ * Created: 08/01/2021
+ * Updated: 08/01/2021
+ * 
+*/
 
+/*
+    derived class from products.contains all
+    methods and attributes for CDs such as
+    title and artist
+*/
 CDs::CDs()
 {
 }
 
+/**
+ * inherits the add_product() method from abstract class
+ * and add title,artis,of new CD into the
+ * item_data vector.
+*/
 void CDs::add_CD_details()
 {
     add_product();
@@ -26,6 +43,14 @@ void CDs::add_CD_details()
 
     store_product("CDs.txt");
 }
+/**
+ * parses through a file of CD data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is decreased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be sold
+*/
 void CDs::sell_CD(int id)
 {
     int sold_amount;
@@ -118,6 +143,14 @@ void CDs::sell_CD(int id)
         }
     }
 }
+/**
+ * parses through a file of CD data and
+ * checks if passed id matches a stored id
+ * when match is found quantity is increased by given amount
+ * products not matching id are stored unchanged.
+ * 
+ * @param id product id to be restocked
+*/
 void CDs::restock_CD(int id)
 {
 
@@ -154,7 +187,7 @@ void CDs::restock_CD(int id)
             getline(ss, tempString, ':'); //title
             title = tempString;
 
-            getline(ss, tempString, ':'); //author
+            getline(ss, tempString, ':'); //artist
             artist = tempString;
 
 
@@ -202,6 +235,10 @@ void CDs::restock_CD(int id)
         }
     }
 }
+/*
+    parses through datafile and prints its
+    content into the console as a table
+*/
 void CDs::show_inventory()
 {
     std::string line;

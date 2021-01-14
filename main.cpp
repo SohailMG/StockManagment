@@ -61,6 +61,7 @@ int main()
                 product.update_stock("CDs.txt");
                 CDs.show_inventory();
             }
+            // if user chooses DVD catgory
             else if (catg == 2)
             {
                 DVDs.show_inventory();
@@ -68,6 +69,7 @@ int main()
                 product.update_stock("DVDs.txt");
                 DVDs.show_inventory();
             }
+            // if user chooses Books catagory
             else if (catg == 3)
             {
                 books.show_inventory();
@@ -75,6 +77,7 @@ int main()
                 product.update_stock("Books.txt");
                 books.show_inventory();
             }
+            // if user chooses magazines
             else if (catg == 4)
             {
                 magazines.show_inventory();
@@ -82,11 +85,13 @@ int main()
                 product.update_stock("Magazines.txt");
                 magazines.show_inventory();
             }
+            // if user chooses an invalid option
             else
             {
-                std::cout << "Invalid" << std::endl;
+                std::cout << catg << " is out of range" << std::endl;
             }
         }
+        // checking if user choose to add an item
         else if (menu == 2)
         {
             int catg = check_catagory();
@@ -112,6 +117,7 @@ int main()
                 std::cout << "Invalid" << std::endl;
             }
         }
+        // checkin if user chooses to restock an item
         else if (menu == 3)
         {
             int catg = check_catagory();
@@ -149,20 +155,24 @@ int main()
                 std::cout << "Catagory " << catg << " Is unrecognised" << std::endl;
             }
         }
+        // checking if user chooses to update stock levels
         else if (menu == 4)
         {
             std::cout << "\n"
                       << "\t\t"
                       << "**Stock has been updated**" << std::endl;
         }
+        // checking if user chooses to view sales report
         else if (menu == 5)
         {
             product.view_sales();
         }
+        // checking if user decides to quite program
         else if (menu == 6)
         {
             user_quits = true;
         }
+        // checking if user inputs an out of range option
         else
         {
             std::cout << "\n"
